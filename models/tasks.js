@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Tasks = sequelize.define("Tasks", {
+  var Tasks = sequelize.define("Task", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -41,6 +41,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
+    Tasks.belongsToMany(models.User,{through:"UserTask"})
   };
 
   return Tasks;

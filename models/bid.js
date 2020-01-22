@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
-        Bid.belongsTo(models.Tasks, {
+        Bid.belongsTo(models.Task, {
             foreignKey: {
                 allowNull: false
             }
