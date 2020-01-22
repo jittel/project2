@@ -26,6 +26,17 @@ module.exports = function(sequelize, DataTypes) {
         }
 
     });
-
-    return User;
-};
+    User.associate = function(models) {
+        // We're saying that a Users should belong to an Author
+        // A User can't be created without an Author due to the foreign key constraint
+        User.hasMany(models.Task, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+        User.belongsToMany(models.Task,{through:"UserTask"})
+      };
+    
+      return User;
+    };
+    
