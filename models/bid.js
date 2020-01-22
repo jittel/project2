@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
     var Bid = sequelize.define("Bid", {
-        // Giving the User model a bid price of type FLOAT
+        // Giving the Bid model a bid price of type FLOAT
         bid_price: {
             type: DataTypes.FLOAT(10, 2),
             allowNull: false,
         },
-        // Giving the User model a password of type STRING with a minimum length
+        // Giving the Bid model a awarded of type boolean
         awarded: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
