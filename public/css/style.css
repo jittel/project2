@@ -1,0 +1,65 @@
+.jumbotron {
+    background-repeat: no-repeat;
+    background-color: #d46767;
+    color:#5c5d5c;
+  }
+
+  #newtask {
+    color: #5c5c5c;
+  }
+ 
+
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0;
+  color:#5c5c5c;
+  background: #d46767;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: #5c5c5c;
+  text-decoration: none;
+}
+
+/* edit this */
+a:hover {
+  color: var(--primary-color);
+}
+
+.container {
+  max-width: 960px;
+  padding: 1rem 4rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+.error {
+  padding: 5px;
+  border: #767 solid 1px;
+  margin-bottom: 15px;
+}
+
+/* Header */
+header {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6rem;
+}
+
+header ul {
+  display: flex;
+}
+
+header li {
+  margin: 0 1rem;
+}
