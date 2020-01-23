@@ -2,16 +2,16 @@
 
 //post template ??
 // sets variable source to the animalTemplate id in index.html
-var source = document.getElementById("animalTemplate").innerHTML;
+var source = document.getElementById("postTemplate").innerHTML;
  
 // Handlebars compiles the above source into a template
 var template = Handlebars.compile(source);
  
 // data
-var data = {animals: [
-  {type: "Dog", sound: "woof"},
-  {type: "Cat", sound: "meow"},
-  {type: "Cow", sound: "moo"}
+var data = {posts: [
+{posts: username, task: true},
+{posts: username, task: true},
+{posts: username, task: true}
 ]};
  
 // data is passed to above template

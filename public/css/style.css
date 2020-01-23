@@ -55,11 +55,11 @@ header {
   padding: 1rem 6rem;
 }
 
-header nav ul {
+header ul {
   display: flex;
 }
 
-header nav li {
+header li {
   margin: 0 1rem;
 }
 
