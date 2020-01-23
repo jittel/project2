@@ -1,4 +1,4 @@
-.jumbotron {
+.nav-wrapper{
     background-repeat: no-repeat;
     background-color: #d46767;
     color:#5c5d5c;
@@ -26,11 +26,6 @@ a {
   text-decoration: none;
 }
 
-/* edit this */
-a:hover {
-  color: var(--primary-color);
-}
-
 .container {
   max-width: 960px;
   padding: 1rem 4rem;
@@ -38,11 +33,6 @@ a:hover {
   overflow: hidden;
 }
 
-.error {
-  padding: 5px;
-  border: #767 solid 1px;
-  margin-bottom: 15px;
-}
 
 /* Header */
 header {
