@@ -13,15 +13,15 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     },
     bid_end_time: {
-      type: DataTypes.TEXT,
+      type: DataTypes.DATE,
       allowNull: false
     },
     task_start: {
-      type: DataTypes.TEXT,
+      type: DataTypes.DATE,
       allowNull: false,
       len: [1]
     },
-    catagory: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
       len: [1]
