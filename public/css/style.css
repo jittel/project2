@@ -1,7 +1,7 @@
 .jumbotron {
     background-repeat: no-repeat;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #d46767;
+    color:#5c5d5c;
   }
 
   #newtask {
@@ -12,8 +12,8 @@
 body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin: 0;
-  color: rgb(39, 38, 39);
-  background: #42f10d;
+  color:#5c5c5c;
+  background: #d46767;
 }
 
 ul {
@@ -22,10 +22,11 @@ ul {
 }
 
 a {
-  color: #fff;
+  color: #5c5c5c;
   text-decoration: none;
 }
 
+/* edit this */
 a:hover {
   color: var(--primary-color);
 }
