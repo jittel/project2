@@ -22,8 +22,11 @@ $(function () {
     });
   }
 
-  // Getting the initial list of Tasks
-  getTasks();
+
+  //  TODO: Added jQuery card being clicked will open up the task.
+  //Looking at the top block maybe we could.
+
+
   
   // InitializeRows handles appending all of our constructed Task HTML inside
   // taskContainer
@@ -96,3 +99,21 @@ $(function () {
     getTasks(newTaskCategory);
   }
 });
+
+
+  //  TODO: Add jQuery so that when the card is clicked on the home page the card opens the task instead of a link.
+  //Looking at the top block maybe we could 
+
+  var data = {tasks: [
+    // status if it's open or closed
+  {category: "indoors", description:  " {{description}} " , status: true},
+  {category: "outdoors", description:  " {{description}} " , status: true},
+  {category: "misc", description:  " {{description}} " , status: true}
+  ]};
+  //If the status of the tasks is true that means the bid is open. Open Tasks will appear on the task card(s).
+  // data is passed to above template
+  var output = template(data);
+  
+  
+  
+  //end of TP Notes

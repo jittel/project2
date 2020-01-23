@@ -1,39 +1,8 @@
-{{!-- viewing the tasks/posts --}}
-<header>
-<div class="container">
-    <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Trade Jack</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		  <li><a href="collapsible.html"></a>Home</li>
-        <li><a href="sass.html">Login </a></li>
-        <li><a href="badges.html">My Posts</a></li>
-        <li><a href="collapsible.html"></a></li>
-      </ul>
-    </div>
-  </nav>
-  <div>
-</header>
+{{!-- This is the partial for the userpage --}}
 
-<body>
-<section id="tasks" class="container">
-    <h1>All Tasks</h1>
 
-    {{#each tasks}}
-    <div class="task">
-        <h3>{{user_name}}</h3>
-        <p>{{user_task}}</p>
-
-    </div>
-    {{else}}
-    <p>No tasks yet!</p>
-    {{/each}}
-
-</section>
-</body>
-
-{{!-- Footer --}}
-        <footer class="page-footer">
+{{!-- Created the footer partial for userpage --}}
+<footer class="page-footer">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -57,6 +26,3 @@
             </div>
           </div>
         </footer>
-   
- <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
-  <script src="js/task.js"></script>
