@@ -23,7 +23,11 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-// require("./controllers/controller.js")(app);
+const taskRoutes = require('./controllers/taskController');
+app.use("/api/task",taskRoutes);
+
+const htmlRoutes = require('./controllers/htmlController');
+app.use(htmlRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

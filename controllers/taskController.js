@@ -7,18 +7,19 @@ var db = require("../models");
 
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/api/task", function (req, res) {
-    db.Task.all(function (data) {
-        var hbsObject = {
-            tasks: data
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
-    });
+router.get("/", function (req, res) {
+    // db.Task.findAll(function (data) {
+    //     var hbsObject = {
+    //         tasks: data
+    //     };
+    //     console.log(hbsObject);
+    //     res.render("index", hbsObject);
+    // });
+    res.json('task index route!')
 });
 
 // create a task
-router.post("/api/task/new", function (req, res) {
+router.post("/new", function (req, res) {
     db.Task.create([
         "title", "description", "bid_end_time", "task_start", "category", "location"
     ], [

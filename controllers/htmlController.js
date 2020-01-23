@@ -7,7 +7,7 @@ var db = require("../models");
 
 
 router.get('/',function(req,res){
-    res.render('index');
+    res.json('poop');
 })
 
 module.exports = router;
