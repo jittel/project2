@@ -4,11 +4,11 @@
     <div class="form-wrap">
         <h1>Add A Post</h1>
         <p>Your username will be shared with registered users who reply to your post.</p>
-        {{#each errors}}
-        <div class="error">
-            <p>{{text}}</p>
-        </div>
-        {{/each}}
+        
+        {{#each task}}
+    {{> partial post-block task=true}}        
+      {{/each}}
+
 
         <form action="/posts/add" method="POST">
             <div class="input-group">
