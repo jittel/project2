@@ -14,6 +14,8 @@ console.log(process.env.SESSION_SECRET)
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+//imports entire controllers folder, we will handle moularization there
+var allRoutes = require('./controllers');
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -34,17 +36,8 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitia
 
 // Routes
 // =============================================================
-const taskRoutes = require('./controllers/taskController');
-app.use("/api/task",taskRoutes);
 
-const htmlRoutes = require('./controllers/htmlController');
-app.use(htmlRoutes);
-
-const bidRoutes = require('./controllers/bidController');
-app.use("/api/bid", bidRoutes);
-
-const authRoutes = require('./controllers/authController');
-app.use(authRoutes);
+app.use('/',allRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
