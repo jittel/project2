@@ -1,5 +1,6 @@
 {{!-- This has been edited from bootstrap to materialize TP --}}
-{{!-- git note -- added CSS --}}
+{{!-- Jumbotron should go in the main.handlebars --}}
+{{!-- Do not touch --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +27,33 @@
 </head>
 
 <body>
-     {{{ body }}}
+   <header>
+    <div class="jumbotron">
+        <a href="#" class="brand-logo">Trade Jack</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Home</a></li>
+          <li><a href="sass.html">Log in/Sign up</a></li>
+          <li><a href="badges.html">View My Page</a></li>
+          <li><a href="collapsible.html">Make a post</a></li>
+        </ul>
+      </div>
 
+      <div class="search">
+   SEARCH BAR 
+      </div>
+        <!-- SEARCH BAR  -->
+
+		</jumbotron> 
+</header>
+
+  <div class="container">
+          {{{ body }}}
+</div>
       <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js"></script>
 
 </body>
 
 </html>
+

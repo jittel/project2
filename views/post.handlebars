@@ -1,14 +1,37 @@
-<div class="container">
 
-    <div class="jumbotron">
-             <div class="logo" id="leftside"><strong>Trade Jack</strong>
-            <button type="button" class="Login btn btn-danger" id="loginbutton" data-id="{{this.id}}"></button>
-            <button type="button" class="Userpage btn btn-danger" id="userpagebutton" data-id="{{this.id}}"></button>
-            <button type="button" class="Createpost btn btn-danger" id="createbutton" data-id="{{this.id}}"></button>
-        {{!-- TODO: Add Search bar --}}
+<section id="posts" class="container">
+    <h1>All Posts</h1>
 
-    </jumbotron>
+    {{#each posts}}
+    <div class="post">
+        <h3>{{user_name}}</h3>
+        <p>{{user_post}}</p>
+        <p>{{task}}</p>
+         <p>{{price}}</p>
+    </div>
+    {{else}}
+    <p>No posts available</p>
+    {{/each}}
 
+</section>
 
-</div>
-<!--endcontainer -->
+{{!-- top or bottom --}}
+
+<section id="posts" class="container">
+    <h1>All Posts</h1>
+
+    {{#each posts}}
+    <div class="post">
+        <h3>{{user_name}}</h3>
+        <p>{{User_post}}</p>
+        <ul>
+            <li>Description: <span>{{description}}</span></li>
+            <li>Price: {{price}}</li>
+        </ul>
+
+        <button data-id="{{this.id}}" class="delquote">Delete</button>
+
+    </div>
+    {{else}}
+    <p>No gigs available</p>
+    {{/each}}
