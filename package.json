@@ -19,6 +19,8 @@
   "homepage": "https://github.com/jittel/project2#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "materialize": "^1.0.0",
+    "materialize-css": "^1.0.0-rc.2",
     "mysql": "^2.18.0",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.3"
