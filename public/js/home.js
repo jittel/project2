@@ -1,9 +1,9 @@
-$(document).ready(function () {
+$(function () {
   // blogContainer holds all of our Tasks
   var taskCategorySelect = $("#category");
   // Click events for the edit and delete buttons
   taskCategorySelect.on("change", handleCategoryChange);
-  var Tasks;
+  var tasks;
 
   // This function grabs tasks from the database and updates the view
   function getTasks(category) {
