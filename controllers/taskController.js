@@ -5,6 +5,30 @@ var router = express.Router();
 // Import the models to use its database functions.
 var db = require("../models");
 
+
+// Create all our routes and set up logic within those routes where required.
+router.get("/task", function (req, res) {
+    db.Task.all(function (data) {
+        var hbsObject = {
+            tasks: data
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+    });
+});
+
+// create a task
+router.post("/api/task/new", function (req, res) {
+    db.Task.create([
+        "title", "description", "bid_end_time", "task_start", "category", "location"
+    ], [
+        req.body.title, req.body.description, req.body.bid_end_time, req.body.task_start, req.body.category, req.body.location
+    ], function (result) {
+        // Send back the ID of the new quote
+        res.json({ id: result.insertId });
+    });
+});
+
 // update a task (title and description)
 router.put("/api/task/:id", function (req, res) {
     var condition = "id = " + req.params.id;
