@@ -2,64 +2,61 @@ var express = require("express");
 
 var router = express.Router();
 
-
 // Import the models to use its database functions.
 var db = require("../models");
 
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/bid", function (req, res) {
-    db.Bid.all(function (data) {
-        var hbsObject = {
-            bid: data
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
+router.get("/", function (req, res) {
+    var query = {};
+    db.Bid.findAll({
+        where: query
+    }).then(function (dbBid) {
+        res.json(dbBid);
     });
+    // res.json('task index route!')
 });
 
-// create a bid
-router.post("/api/bid/new", function (req, res) {
-    db.Bid.create([
-        "bid_price", "awarded"
-    ], [
-        req.body.bid_price, req.body.awarded
-    ], function (result) {
-        // Send back the ID of the new quote
-        res.json({ id: result.insertId });
-    });
-});
-
-// update a bid
-router.put("/api/bid/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
-    console.log("condition", condition);
-
-    db.Bid.update({
-        bid_price: req.body.bid_price,
-        awarded: req.body.awarded
-    }, condition, function (result) {
-        if (result.changedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
+// Get route for retrieving a single post
+router.get(":id", function (req, res) {
+    db.Bid.findOne({
+        where: {
+            id: req.params.id
         }
+    }).then(function (dbBid) {
+        console.log(dbBid);
+        res.json(dbBid);
     });
 });
 
-// delete a bid
+// create a task
+router.post("/new", function (req, res) {
+    db.Bid.create(req.body).then(function (dbBid) {
+        res.json(dbBid);
+    });
+});
+
+// update a task (title and description)
+router.put("/:id", function (req, res) {
+    db.Bid.update(
+        req.body,
+        {
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbBid) {
+            res.json(dbBid);
+        });
+});
+
+// delete a task
 router.delete("/api/bid/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
-    db.Bid.delete(condition, function (result) {
-        if (result.affectedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
+    db.Bid.destroy({
+        where: {
+            id: req.params.id
         }
+    }).then(function (dbBid) {
+        res.json(dbBid);
     });
 });
 

@@ -8,58 +8,55 @@ var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
-    // db.Task.findAll(function (data) {
-    //     var hbsObject = {
-    //         tasks: data
-    //     };
-    //     console.log(hbsObject);
-    //     res.render("index", hbsObject);
-    // });
-    res.json('task index route!')
+    var query = {};
+    db.Task.findAll({
+        where: query
+    }).then(function (dbTask) {
+        res.json(dbTask);
+    });
+    // res.json('task index route!')
+});
+
+// Get route for retrieving a single post
+router.get(":id", function (req, res) {
+    db.Task.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(function (dbTask) {
+        console.log(dbTask);
+        res.json(dbTask);
+    });
 });
 
 // create a task
 router.post("/new", function (req, res) {
-    db.Task.create([
-        "title", "description", "bid_end_time", "task_start", "category", "location"
-    ], [
-        req.body.title, req.body.description, req.body.bid_end_time, req.body.task_start, req.body.category, req.body.location
-    ], function (result) {
-        // Send back the ID of the new quote
-        res.json({ id: result.insertId });
+    db.Task.create(req.body).then(function (dbTask) {
+        res.json(dbTask);
     });
 });
 
 // update a task (title and description)
 router.put("/api/task/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
-    console.log("condition", condition);
-
-    db.Task.update({
-        title: req.body.title,
-        description: req.body.description
-    }, condition, function (result) {
-        if (result.changedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
+    db.Task.update(
+        req.body,
+        {
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbTask) {
+            res.json(dbTask);
+        });
 });
 
 // delete a task
 router.delete("/api/task/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
-    db.Task.delete(condition, function (result) {
-        if (result.affectedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
+    db.Post.destroy({
+        where: {
+            id: req.params.id
         }
+    }).then(function (dbPost) {
+        res.json(dbPost);
     });
 });
 

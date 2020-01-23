@@ -29,6 +29,9 @@ app.use("/api/task",taskRoutes);
 const htmlRoutes = require('./controllers/htmlController');
 app.use(htmlRoutes);
 
+const bidRoutes = require('./controllers/bidController');
+app.use("/api/bid", bidRoutes);
+
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: true }).then(function() {
