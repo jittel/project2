@@ -1,4 +1,3 @@
-
 // Created a create post event function
 $(function() {
     $(".create-form").on("submit", function(event) {
