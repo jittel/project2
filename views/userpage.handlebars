@@ -1,13 +1,38 @@
-<div class="container">
+{{!-- Basically the "landing" page so it should be a replica of home.handlebars --}}
 
-    <div class="jumbotron">
-             <div class="logo" id="leftside"><strong>Trade Jack</strong>
-            <button type="button" class="Login btn btn-danger" id="loginbutton" data-id="{{this.id}}"></button>
-            <button type="button" class="Userpage btn btn-danger" id="userpagebutton" data-id="{{this.id}}"></button>
-            <button type="button" class="Createpost btn btn-danger" id="createbutton" data-id="{{this.id}}"></button>
-        {{!-- TODO: Add Search bar --}}
+<!DOCTYPE html>
+<html lang="en">
 
-    </jumbotron>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-</div>
-<!--endcontainer -->
+
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Trade Jack | Outdoor, Indoor, Misc. Tasks</title>
+</head>
+
+<body>
+    <header>
+        <h2><a href="/">Trade Jack </a></h2>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home </a>
+                </li>
+                <li>
+                    <a href="/posts">All Posts </a>
+                </li>
+                <li>
+                    <a href="/posts/add">Add Post </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    {{{body}}}
+</body>
+
+</html>

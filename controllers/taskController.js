@@ -7,7 +7,7 @@ var db = require("../models");
 
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/task", function (req, res) {
+router.get("/api/task", function (req, res) {
     db.Task.all(function (data) {
         var hbsObject = {
             tasks: data
