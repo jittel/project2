@@ -1,0 +1,21 @@
+{{!-- This is a partial for the add/edit task handlebar --}}
+
+
+ <li>
+	{{username}}
+{{!-- Add task button --}}
+	<button class="add-task" data-id="{{id}}" data-newtask="{{task}}">
+		{{#if task}}Create Task{{else}} Not valid task{{/if}}
+	</button>
+{{!-- Delete task button --}}
+	<button class="delete-task" data-id="{{this.id}}">DELETE!</button>
+
+{{!-- Add edit button --}}
+	<button class="edit-task" data-id="{{id}}" data-edittask="{{task}}">
+		{{#if edittask}}Edit Task{{/if}}
+	</button>
+</li>
+
+
+{{!-- For the add post page I am going to need to add a form/card --}}
+
