@@ -56,7 +56,7 @@ module.exports = {
 
     // delete a task
     deleteTask: function () {
-        router.delete("/:id", function (req, res) {
+        // router.delete("/:id", function (req, res) {
             db.Post.destroy({
                 where: {
                     id: req.params.id
@@ -64,7 +64,7 @@ module.exports = {
             }).then(function (dbPost) {
                 res.json(dbPost);
             });
-        });
+        // });
     }
 }
 

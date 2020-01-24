@@ -16,7 +16,7 @@ var exphbs = require("express-handlebars");
 var app = express();
 var PORT = process.env.PORT || 8080;
 //imports entire controllers folder, we will handle moularization there
-var allRoutes = require('./routes/api');
+var allRoutes = require('./routes');
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -35,8 +35,8 @@ app.use(express.static("public"));
 var exphbs = require('express-handlebars');
 // Routes
 // =============================================================
-const taskRoutes = require('./controllers/taskController');
-app.use("/api/task", taskRoutes);
+// const taskRoutes = require('./controllers/taskController');
+// app.use("/api/task", taskRoutes);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
