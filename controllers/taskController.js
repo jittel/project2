@@ -32,7 +32,7 @@ module.exports = {
     },
 
     // create a task
-    createTask: function () {
+    newTask: function () {
         db.Task.create(req.body).then(function (dbTask) {
             res.json(dbTask);
         });

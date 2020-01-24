@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../models');
 const bcrypt = require('bcryptjs');
 
+
 //get route for secret clubhouse, if logged in will elt you in, otherwise will fail
 router.get('/secret',function(req,res){
     if(req.session.user) {
@@ -18,9 +19,9 @@ router.get('/allUsers',function(req,res){
     })
 })
 
-//loads signup form
+//loads signup form with handlebars
 router.get('/signup',function(req,res){
-    res.render('signup');
+    res.render('create-acc'); // this should be whatever file we have as sign up. handlebars or whatever
 })
 
 //creates new instance of user
@@ -42,9 +43,9 @@ router.post('/signup',function(req,res){
     })
 })
 
-//loads login form
+//loads login form from handlebars file
 router.get('/login',function(req,res){
-    res.render('login')
+    res.render('login') // this should be whatever file we have as sign in. handlebars or whatever
 })
 
 //route for user login
