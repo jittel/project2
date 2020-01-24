@@ -1,24 +1,10 @@
-{{!-- Login will have a different layout --}}
-
-    <body>
-      <div class="container">
-          <div class="valign-wrapper">
-            <!-- Page Content goes here -->
-<p>Testing login page</p>
-
-        <form>
-{{!-- Logo would be link back to home  --}}
-        {{!-- <h3>Vertically aligned form</h3>
-        </div>
-        <h5 class="center-align">Text</h7>
-         </div>
- --}}
-   
- <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
-  <script src="../"></script>
+<h1>LOGIN PAGE</h1>
 
 
+<form action="/auth/login"method="POST">
+    <input type="text" name = "name" placeholder="Username">
+    <input type="password" name = "password" placeholder="password" >
+    <input type="submit" value="Go Go go!">
+</form>
 
-        </form>
-      </div>
-    </body>
+<a href="/auth/signup">First time? sign up here!</a>

@@ -4,10 +4,10 @@
     <div class="form-wrap">
         <h1>Add A Post</h1>
         <p>Your username will be shared with registered users who reply to your post.</p>
-        
+
         {{#each task}}
-    {{> partial post-block task=true}}        
-      {{/each}}
+        {{> partial post-block task=true}}
+        {{/each}}
 
 
         <form action="/posts/add" method="POST">
@@ -16,25 +16,54 @@
                 <input type="text" name="user_name" id="user" class="input-box"
                     placeholder="eg. Bear McGruff, Jane Doe, etc" maxlength="100" value="{{user_name}}">
             </div>
-          
+
             <div class="input-group">
                 <label for="price">Price</label>
-                <input type="text" name="task_price" id="task_price" class="input-box"
-                    placeholder="eg. $" value="{{price}}">
+                <input type="text" name="task_price" id="task_price" class="input-box" placeholder="eg. $"
+                    value="{{price}}">
             </div>
 
             <div class="input-group">
                 <label for="budget">Task Description</label>
-                <input type="text" name="description" id="description" class="input-box" placeholder="Enter task description"
-                    value="{{description}}">
+                <input type="text" name="description" id="description" class="input-box"
+                    placeholder="Enter task description" value="{{description}}">
             </div>
             <input type="submit" value="Add Post" class="btn btn-reverse">
         </form>
+        <script>
+            (function (window, jquery) {
+                var $ = jquery;
+                if ($ !== null) {
+                    var fup = {
+                        fileSelectBtn: $('<a href="">Select files</a>'),
+                        fileSelector: $('<input type="file" multiple="">'),
+                        outputArea: undefined,
+                        init: function (cssSelector) {
+                            fup.outputArea = $(cssSelector);
+                            fup.outputArea.append(fup.fileSelectBtn);
 
-           
- <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
-  <script src="js/add.js"></script>
+                            fup.fileSelectBtn.on("click", function () {
+                                fup.fileSelector.click();
+                                return false;
+                            });
+                        }
+                    }
+
+                    window.fileup = fup;
+                } else {
+                    console.error("jQuery Required.");
+                }
+            })(window, jQuery);
+
+            $(document).ready(function () {
+                var fup = window.fileup;
+                fup.init(".fileupload");
+            });
+        </script>
+
+
+        <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
+        <script src="js/add.js"></script>
 
     </div>
 </section>
-
