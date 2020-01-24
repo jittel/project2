@@ -27,13 +27,18 @@ router.get('/signup',function(req,res){
 router.post('/signup',function(req,res){
     console.log(req.body)
     db.User.create({
-        name:req.body.name,
-        password:req.body.password
+        username:req.body.username,
+        password:req.body.password,
+        email: req.body.email
     }).then(function(newUser){
         console.log(newUser)
         res.json(newUser);
     }).catch(function(error){
         console.log(error);
+        res.json({
+            success: false,
+            message: error.message
+        })
     })
 })
 
