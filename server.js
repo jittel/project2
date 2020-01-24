@@ -28,7 +28,7 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 const taskRoutes = require('./controllers/taskController');
-app.use("/api/task",taskRoutes);
+app.use("/api/task", taskRoutes);
 
 const htmlRoutes = require('./controllers/htmlController');
 app.use(htmlRoutes);
