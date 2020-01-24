@@ -5,11 +5,15 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+<<<<<<< HEAD
 //using express-session to enable session storage for our server
 var session = require("express-session");
 require('dotenv').config();
 console.log(process.env.SESSION_SECRET)
 
+=======
+var exphbs = require("express-handlebars");
+>>>>>>> d8d63cc9447645c1ebdf1547864b8883fb48fd31
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -24,10 +28,18 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Set Handlebars as the default templating engine.
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // Static directory
 app.use(express.static("public"));
 
 var exphbs = require('express-handlebars');
+// Routes
+// =============================================================
+const taskRoutes = require('./controllers/taskController');
+app.use("/api/task", taskRoutes);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -38,6 +50,7 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitia
 // =============================================================
 
 app.use('/',allRoutes);
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
