@@ -3,7 +3,7 @@ $(function() {
     $(".create-form").on("submit", function(event) {
       event.preventDefault();
   
-      var newPost = {
+      var newTask = {
         post_name: $("#newpost")
           .val()
           .trim(),
