@@ -1,6 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var authRoutes = require('./authorization');
+var authRoutes = require('./authController');
+var taskRoutes = require('./taskController');
+var bidRoutes = require('./bidController');
+var userRoutes = require('./authController');
 //appends "/auth/" to all routes imported from authorization.js
 router.use('/auth',authRoutes);
 router.use('/api/task',taskRoutes);
