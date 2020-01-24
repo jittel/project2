@@ -8,14 +8,14 @@ var db = require("../models");
 
 // Home page 
 router.get('/', function (req, res) {
-        // db.Task.findAll({})
-        //     .then(dbTasks => {
-        //         res.render('home', {
-        //             dbTasks
-        //         });
-                // res.json("home");
-            // })   
-            res.render('home'); 
+        db.Task.findAll({})
+            .then(dbTasks => {
+                console.table(JSON.stringify(dbTasks.dataValues))
+                res.render('home', {
+                    dbTasks
+                });
+            })   
+            // res.render('home'); 
 })
 // test page 
 router.get('/test', function (req, res) {

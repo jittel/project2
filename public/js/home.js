@@ -1,5 +1,4 @@
 $(function () {
-
   // Task card click function to load task page
   $(".tasks").on("click", function () {
     const id = $(this).data("id");

@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
     // A Tasks can't be created without an Author due to the foreign key constraint
     Tasks.belongsTo(models.User, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
     Tasks.belongsToMany(models.User,{through:"UserTask"})
