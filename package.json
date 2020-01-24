@@ -2,7 +2,7 @@
   "name": "project2",
   "version": "1.0.0",
   "description": "a reverse bidding site to either request work or apply for work",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
+    "handlebars": "^4.7.2",
     "materialize": "^1.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "mysql": "^2.18.0",
