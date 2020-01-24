@@ -1,0 +1,67 @@
+{{!-- This is the add/edit a post fixed --}}
+
+<section id="add" class="container">
+    <div class="form-wrap">
+        <h1>Add A Post</h1>
+        <p>Your username will be shared with registered users who reply to your post.</p>
+
+        <form action="/posts/add" method="POST">
+            <div class="input-group">
+                <label for="title">Job Title</label>
+                <input type="text" name="title" id="title" class="input-box" placeholder="Mow Lawn, setup modem, etc"
+                    maxlength="100" value="{{title}}">
+            </div>
+
+            <div class="input-group">
+                <label for="description">Task Description</label>
+                <input type="text" name="description" id="description" class="input-box"
+                    placeholder="Enter task description" value="{{description}}">
+            </div>
+
+            <div class="input-group">
+                <label for="price">Price</label>
+                <input type="text" name="task_price" id="task_price" class="input-box" placeholder="eg. $100"
+                    value="{{task_price}}">
+            </div>
+
+            <div class="input-group">
+                <label for="Category">Category</label>
+                {{!-- <input type="text" name="category" id="category"> --}}
+                <select name="category" id="category">
+                    <option value="" disabled selected hidden>Choose a Category</option>
+                    <option value="home">Home</option>
+                    <option value="yard & garden">Yard and Garden</option>
+                    <option value="deliver">Delivery</option>
+                    <option value="personal care">Personal Care</option>
+                    <option value="tech support">Tech Support</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="Location">Location</label>
+                <input type="text" name="location" id="location" class="input-box" placeholder="eg. $100" maxlength="30"
+                    value="{{location}}">
+            </div>
+
+            <div class="input-group">
+                <label for="bid close date">Bid Close Date</label>
+                <input type="date" name="bid_end_time" id="bid_end_time" class="input-box" placeholder="02-05-20"
+                    value="{{bid_end_date}}">
+            </div>
+
+            <div class="input-group">
+                <label for="Desired Start Date">Desired Start Date</label>
+                <input type="date" name="task_start" id="task_start" class="input-box" placeholder="02-10-20"
+                    value="{{task_start}}">
+            </div>
+
+
+            <input type="submit" value="Add Post" class="btn btn-reverse" id="submitBtn">
+        </form>
+
+
+        <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
+        <script src="js/add.js"></script>
+
+    </div>
+</section>

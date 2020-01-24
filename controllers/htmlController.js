@@ -1,43 +1,32 @@
-var express = require("express");
+const express = require("express");
 
-var router = express.Router();
+const router = express.Router();
 
 // Import the models to use its database functions.
-var db = require("../models");
+const db = require("../models");
 
 
 // Home page 
 router.get('/', function(req, res) {
-        db.Task.findAll({ raw: true })
+    db.Task.findAll({ raw: true })
             .then(dbTasks => {
-                // console.table(JSON.stringify(dbTasks.dataValues))
                 res.render('home', {
+                
                     dbTasks
                 });
                 // res.json(dbTasks)
             })
             // res.render('home'); 
     })
+
+
+
     // test page 
 router.get('/test', function(req, res) {
 
     res.render('test');
     // res.json("home");
 })
-
-// Home page category search
-// router.get('/:category', function (req, res) {
-//         db.Task.findAll({
-//             where: req.params.category
-//         })
-//             .then(dbTasks => {
-
-//                 res.render("home", {
-//                     dbTasks
-//                 });
-//             })    
-
-// })
 
 // Task page
 router.get('/task/:id', function(req, res) {
@@ -79,10 +68,8 @@ router.get('/create-acc', function(req, res) {
 })
 
 // Add task page
-router.get('/add', function(req, res) {
-    res.render("add", {
-        dbTasks
-    });
+router.get('/addtask', function(req, res) {
+    res.render("addTask");
 })
 
 module.exports = router;
