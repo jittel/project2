@@ -1,25 +1,21 @@
 var express = require("express");
 
 var router = express.Router();
+const taskController = require("../../controllers/taskController");
+const bidController = require("../../controllers/bidController");
 
 // Import the models to use its database functions.
 var db = require("../models");
 
-
-// Home page 
-router.get('/', function(req, res) {
-        db.Task.findAll({ raw: true })
-            .then(dbTasks => {
-                // console.table(JSON.stringify(dbTasks.dataValues))
-                res.render('home', {
-                    dbTasks
-                });
-                // res.json(dbTasks)
-            })
-            // res.render('home'); 
-    })
-    // test page 
-router.get('/test', function(req, res) {
+module.exports = {
+    // Home page 
+    homePage: function (req, res) {
+        taskController.singleTask()
+        bidController.allBids()
+    }
+}
+// test page 
+router.get('/test', function (req, res) {
 
     res.render('test');
     // res.json("home");
@@ -40,12 +36,12 @@ router.get('/test', function(req, res) {
 // })
 
 // Task page
-router.get('/task/:id', function(req, res) {
+router.get('/task/:id', function (req, res) {
     db.Task.findAllOne({
         where: {
             id: req.params.id
         }
-    }).then(function(dbTask) {
+    }).then(function (dbTask) {
         console.log(dbTask);
         res.render("task", {
             dbTask
@@ -54,7 +50,7 @@ router.get('/task/:id', function(req, res) {
 })
 
 // User page
-router.get('/user', function(req, res) {
+router.get('/user', function (req, res) {
     db.Task.findAll({})
         .then(dbTasks => {
 
@@ -65,21 +61,21 @@ router.get('/user', function(req, res) {
 })
 
 // Login page
-router.get('/login', function(req, res) {
+router.get('/login', function (req, res) {
 
     res.json("login");
 
 })
 
 // Create account page
-router.get('/create-acc', function(req, res) {
+router.get('/create-acc', function (req, res) {
 
     res.render("create-acc");
 
 })
 
 // Add task page
-router.get('/add', function(req, res) {
+router.get('/add', function (req, res) {
     res.render("add", {
         dbTasks
     });
