@@ -1,6 +1,6 @@
 const express = require("express");
 // Requiring our models
-const db = require('../models');
+const db = require('../../models');
 const router = express.Router();
 
 module.exports = {
