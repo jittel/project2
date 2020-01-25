@@ -8,7 +8,7 @@ var db = require("../models");
 module.exports = {
 
     // Create all our routes and set up logic within those routes where required.
-    allTask: function () {
+    allTask: function (req,res) {
         var query = {};
         db.Task.findAll({
             where: query
@@ -18,7 +18,7 @@ module.exports = {
         // res.json('task index route!')
     },
     // Get route for retrieving a single post
-    singleTask: function () {
+    singleTask: function (req,res) {
         // router.get("/:id", function (req, res) {
         db.Task.findOne({
             where: {
@@ -32,14 +32,14 @@ module.exports = {
     },
 
     // create a task
-    newTask: function () {
+    newTask: function (req,res) {
         db.Task.create(req.body).then(function (dbTask) {
             res.json(dbTask);
         });
     },
 
     // update a task (title and description)
-    updateTask: function () {
+    updateTask: function (req,res) {
         // router.put("/:id", function (req, res) {
         db.Task.update(
             req.body,
@@ -55,7 +55,7 @@ module.exports = {
 
 
     // delete a task
-    deleteTask: function () {
+    deleteTask: function (req,res) {
         // router.delete("/:id", function (req, res) {
             db.Post.destroy({
                 where: {

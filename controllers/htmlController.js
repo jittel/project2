@@ -1,40 +1,36 @@
 const express = require("express");
 
-const router = express.Router();
+
+var router = express.Router();
+const taskController = require("../../controllers/taskController");
+const bidController = require("../../controllers/bidController");
+
 
 // Import the models to use its database functions.
 const db = require("../models");
 
 
-// Home page 
-router.get('/', function(req, res) {
-    db.Task.findAll({ raw: true })
-            .then(dbTasks => {
-                res.render('home', {
-                
-                    dbTasks
-                });
-                // res.json(dbTasks)
-            })
-            // res.render('home'); 
-    })
-
-
-
-    // test page 
-router.get('/test', function(req, res) {
+module.exports = {
+    // Home page 
+    homePage: function (req, res) {
+        taskController.singleTask()
+        bidController.allBids()
+    }
+}
+// test page 
+router.get('/test', function (req, res) {
 
     res.render('test');
     // res.json("home");
 })
 
 // Task page
-router.get('/task/:id', function(req, res) {
+router.get('/task/:id', function (req, res) {
     db.Task.findAllOne({
         where: {
             id: req.params.id
         }
-    }).then(function(dbTask) {
+    }).then(function (dbTask) {
         console.log(dbTask);
         res.render("task", {
             dbTask
@@ -43,7 +39,7 @@ router.get('/task/:id', function(req, res) {
 })
 
 // User page
-router.get('/user', function(req, res) {
+router.get('/user', function (req, res) {
     db.Task.findAll({})
         .then(dbTasks => {
 
@@ -54,22 +50,25 @@ router.get('/user', function(req, res) {
 })
 
 // Login page
-router.get('/login', function(req, res) {
+router.get('/login', function (req, res) {
 
     res.json("login");
 
 })
 
 // Create account page
-router.get('/create-acc', function(req, res) {
+router.get('/create-acc', function (req, res) {
 
     res.render("create-acc");
 
 })
 
 // Add task page
-router.get('/addtask', function(req, res) {
-    res.render("addTask");
-})
+
+router.get('/add', function (req, res) {
+    res.render("add", {
+        dbTasks
+    });
+
 
 module.exports = router;
