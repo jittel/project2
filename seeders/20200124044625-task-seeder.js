@@ -11,8 +11,8 @@ module.exports = {
                 bid_end_time: new Date(),
                 task_start: new Date(),
                 createdAt: new Date(),
-                updatedAt: new Date()
-                    // UserID: 1
+                updatedAt: new Date(),
+                    UserID: 1
             },
             {
                 title: 'Mow the lawn',
@@ -23,8 +23,8 @@ module.exports = {
                 bid_end_time: new Date(),
                 task_start: new Date(),
                 createdAt: new Date(),
-                updatedAt: new Date()
-                    // UserID: 2
+                updatedAt: new Date(),
+                    UserID: 2
             },
             {
                 title: 'Hang some blinds',
@@ -35,8 +35,8 @@ module.exports = {
                 bid_end_time: new Date(),
                 task_start: new Date(),
                 createdAt: new Date(),
-                updatedAt: new Date()
-                    // UserID: 3
+                updatedAt: new Date(),
+                    UserID: 3
             }
         ], {});
     },

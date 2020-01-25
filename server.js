@@ -16,7 +16,7 @@ var exphbs = require("express-handlebars");
 var app = express();
 var PORT = process.env.PORT || 8080;
 //imports entire controllers folder, we will handle moularization there
-var allRoutes = require('./routes');
+var allRoutes = require('./routes/index');
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -36,12 +36,14 @@ var exphbs = require('express-handlebars');
 // Routes
 // =============================================================
 // const taskRoutes = require('./controllers/taskController');
+
+
 // app.use("/api/task", taskRoutes);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 //initializing sessions on our server, basically boilerplate
-app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true,cookie:{maxAge: 7200000} }));
+// app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true,cookie:{maxAge: 7200000} }));
 
 // Routes
 // =============================================================
@@ -51,7 +53,7 @@ app.use('/',allRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
