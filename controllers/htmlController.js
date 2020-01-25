@@ -1,11 +1,14 @@
-var express = require("express");
+const express = require("express");
+
 
 var router = express.Router();
 const taskController = require("../../controllers/taskController");
 const bidController = require("../../controllers/bidController");
 
+
 // Import the models to use its database functions.
-var db = require("../models");
+const db = require("../models");
+
 
 module.exports = {
     // Home page 
@@ -20,20 +23,6 @@ router.get('/test', function (req, res) {
     res.render('test');
     // res.json("home");
 })
-
-// Home page category search
-// router.get('/:category', function (req, res) {
-//         db.Task.findAll({
-//             where: req.params.category
-//         })
-//             .then(dbTasks => {
-
-//                 res.render("home", {
-//                     dbTasks
-//                 });
-//             })    
-
-// })
 
 // Task page
 router.get('/task/:id', function (req, res) {
@@ -75,10 +64,11 @@ router.get('/create-acc', function (req, res) {
 })
 
 // Add task page
+
 router.get('/add', function (req, res) {
     res.render("add", {
         dbTasks
     });
-})
+
 
 module.exports = router;
