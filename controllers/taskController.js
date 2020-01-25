@@ -38,7 +38,7 @@ module.exports = {
         });
     },
 
-    // update a task (title and description)
+    // update a task
     updateTask: function (req,res) {
         // router.put("/:id", function (req, res) {
         db.Task.update(

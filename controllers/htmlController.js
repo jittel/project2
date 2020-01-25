@@ -9,7 +9,7 @@ var db = require("../models");
 
 module.exports = {
     // Home page 
-    homePage: function (req, res) {
+    singleTaskPage: function (req, res) {
         taskController.singleTask()
         bidController.allBids()
     }
