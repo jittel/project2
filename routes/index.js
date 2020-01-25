@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
 const apiRoutes = require('./api');
-const htmlRoutes = require('./htmlRoute');
+const htmlRoutes = require('./html/htmlRoute');
 
 router.use('/api',apiRoutes);
-router.use('/api',htmlRoutes);
+router.use('/',htmlRoutes);
 
 module.exports = router

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const htmlController = require("../controllers/htmlController");
+const htmlController = require("../../controllers/htmlController");
 
 router.route("/").get(htmlController.homePage);
 router.route("/task").get(htmlController.taskPage);

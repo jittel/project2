@@ -11,20 +11,40 @@ const bid = require("./api/bidController");
 module.exports = {
     // test page: delete after development
     testPage: function (req, res) {
+        console.log('Test page route works');
+        
         res.render('test');
     },
 
     // Home page 
-    homePage: function (req, res) {
-        const allTask = task.allTask();
-        res.render("task", {
-            allTask
+    homePage: async function (req, res) {
+        // const allTasks = await task.allTask(req);
+        // // console.log(allTasks);
+        
+        // res.render("home", {
+        //     allTasks
+        // });
+
+        db.Task.findAll({
+            raw: true
+        })
+        .then(function (dbTasks) {
+            db.Bid.findAll({
+                raw: true
+            })
+            .then(function (dbBid) {
+                // console.log(dbTask);
+                res.render("home",{
+                    dbTasks:dbTasks,
+                    dbBid:dbBid});
+                // res = dbTask
+            });
         });
     },
 
     // Task page
     taskPage: function (req, res) {
-        db.Task.findAllOne({
+        db.Task.findOne({
             where: {
                 id: req.params.id
             }
