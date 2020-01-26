@@ -5,7 +5,7 @@
         <h1>Add A Post</h1>
         <p>Your username will be shared with registered users who reply to your post.</p>
 
-        <form action="/posts/add" method="POST">
+        <form id="cms" method="POST">
             <div class="input-group">
                 <label for="title">Job Title</label>
                 <input type="text" name="title" id="title" class="input-box" placeholder="Mow Lawn, setup modem, etc"
@@ -39,7 +39,7 @@
 
             <div class="input-group">
                 <label for="Location">Location</label>
-                <input type="text" name="location" id="location" class="input-box" placeholder="eg. $100" maxlength="30"
+                <input type="text" name="location" id="location" class="input-box" placeholder="Seattle" maxlength="30"
                     value="{{location}}">
             </div>
 
@@ -54,6 +54,25 @@
                 <input type="date" name="task_start" id="task_start" class="input-box" placeholder="02-10-20"
                     value="{{task_start}}">
             </div>
+
+            <button id="widget" class="cloudinary-button">Upload image</button>
+            <script type="text/javascript">
+               // var recUrl;
+                var widget = cloudinary.createUploadWidget({
+                    cloudName: 'delw6elgw',
+                    uploadPreset: 'r6mprs9r'
+                }, (err, res) => {
+                    if (!err && res && res.event === "success") {
+                        console.log(res.info);
+                        console.log("image uploaded");
+                        // recUrl = res.info.url
+                    }
+                }
+                )
+                document.getElementById("widget").addEventListener("click", function () {
+                    widget.open();
+                }, false);
+            </script>
 
 
             <input type="submit" value="Add Post" class="btn btn-reverse" id="submitBtn">

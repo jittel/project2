@@ -79,8 +79,13 @@ module.exports = {
     // Add task page
 
     addTaskPage: function (req, res) {
-        res.render("add", {
-            dbTasks
-        });
+        // db.Task.create(req.body).then(function (dbTask) {
+        //     res.render("addTask", {dbTask});
+        // });
+        // res.render("add", {
+        //     dbTasks
+        // });
+        // console.log(res.body)
+        res.render("addTask")
     }
 };
