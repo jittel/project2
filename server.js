@@ -74,3 +74,7 @@ db.sequelize.sync({ force: false }).then(function() {
         console.log("App listening on PORT " + PORT);
     });
 });
+
+// app.listen(8080, () => {
+    //console.log ("Server is starting at port" + 8080);
+// })
