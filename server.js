@@ -52,8 +52,18 @@ app.set('view engine', 'handlebars');
 
 app.use('/',allRoutes);
 
-app.get('/home', )
 
+app.get('/home', (req, res) => {
+    res.render('home');
+});
+
+app.get('/login', (req,res) => {
+    res.render('login');
+});
+
+app.get('/userpage', (req,res) => {
+    res.render('userpage');
+});
 
 
 

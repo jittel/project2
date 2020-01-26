@@ -1,13 +1,33 @@
-
+<header>
+	{{!-- This nav works  --}}
 {{> nav}}
 
+</header>
 
-{{!-- body info here  --}}
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <h1 class="header center red-text">Welcome to Trade Jack</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A quick and easy way to hire help!</h5>
+      </div>
+      <div class="row center">
+        <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light orange">Sign up</a>
+      </div>
+      <br><br>
+    </div>
+  </div> 
+  <br><br>
 
-{{> taskcard}}
+  {{!-- <div class="container">
+    <div class="section"> --}}
 
+{{!-- {{> cardstp}} --}}
+{{!-- {{> categorytp }} --}}
+
+{{> cardstp }}
 
 {{> footer}}
+</div>
 
 	<!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
   <script src="js/home.js"></script>
