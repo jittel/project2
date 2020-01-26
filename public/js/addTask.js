@@ -132,12 +132,6 @@ $(function () {
   // const location = $('#location');
   // const initial_price = $('#initial_price');
 
-  // Form check variables
-  // const usernameUniqueCheck = false;
-  // const passwordLengthCheck = false;
-  // const passwordCharsCheck = false;
-  // const emailCheck = false;
-
   // Submit form on submit button click
   $('#submitBtn').click(function () {
     // Check form criteria
@@ -161,20 +155,7 @@ $(function () {
     }).then(function (err, data) {
       if (err) throw err;
       // window.location.href = "/user";
-      console.log(data)
+      console.log("LOOK AT ME")
     })
   })
-
-
-
-  // $("#textbox").on('change keyup paste mouseup', function() {
-  //     if ($(this).val() != lastValue) {
-  //         lastValue = $(this).val();
-  //         console.log('The text box really changed this time');
-  //     }
-  // });
-  // const usernameUnique = false;
-  // const passwordLength = false;
-  // const passwordChars = false;
-  // const email = false;
 })
