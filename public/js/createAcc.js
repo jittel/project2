@@ -6,10 +6,10 @@ $(function () {
   const email = $('#email');
 
   // Form check variables
-  // const usernameUniqueCheck = false;
-  // const passwordLengthCheck = false;
-  // const passwordCharsCheck = false;
-  // const emailCheck = false;
+  const usernameUniqueCheck = false;
+  const passwordLengthCheck = false;
+  const passwordCharsCheck = false;
+  const emailCheck = false;
     
   // Submit form on submit button click
   $('#submitBtn').click(function () {
@@ -36,12 +36,12 @@ $(function () {
 
 
   
-  // $("#textbox").on('change keyup paste mouseup', function() {
-  //     if ($(this).val() != lastValue) {
-  //         lastValue = $(this).val();
-  //         console.log('The text box really changed this time');
-  //     }
-  // });
+  password.on('change keyup paste mouseup', function() {
+      if ($(this).val() != lastValue) {
+          lastValue = $(this).val();
+          console.log('The text box really changed this time');
+      }
+  });
   // const usernameUnique = false;
   // const passwordLength = false;
   // const passwordChars = false;

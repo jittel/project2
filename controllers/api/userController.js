@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require("express");
 // Requiring our models
 const db = require('../../models');
@@ -9,9 +11,10 @@ module.exports = {
     allUsers: function (req, res) {
         db.User.findAll({}).then(function (dbUser) {
             res.json(dbUser);
-        }).then(function (err, data) {
-            if (err) throw err;
-
+        }).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            console.error(err);
         });
     },
     // Get route for retrieving a single user
@@ -21,9 +24,10 @@ module.exports = {
             where: {
                 id: req.params.id
             }
-        }).then(function (err, data) {
-            if (err) throw err;
+        }).then(function (data) {
             res.json(data);
+        }).catch(function (err) {
+            console.error(err);
         });
     },
     // POST route for saving a new user
@@ -35,12 +39,12 @@ module.exports = {
                 password: req.body.password,
                 email: req.body.email
             })
-            .then(function (err, data) {
-                if (err) throw err;
-                window.location.href = "/user";
-                return data
-                // res.json(data);
-            });
+            .then(function (data) {
+                // return data
+                res.json(data);
+            }).catch(function (err) {
+                console.error(err);
+            })
     },
     // DELETE route for deleting user
     // Route: /api/user/:id
@@ -49,9 +53,10 @@ module.exports = {
             where: {
                 id: req.params.id
             }
-        }).then(function (err, data) {
-            if (err) throw err;
+        }).then(function (data) {
             res.json(data);
+        }).catch(function (err) {
+            console.error(err);
         });
     },
     // PUT route for updating user
@@ -64,9 +69,10 @@ module.exports = {
                 where: {
                     id: req.body.id
                 }
-            }).then(function (err, data) {
-            if (err) throw err;
+            }).then(function (data) {
             res.json(data);
+        }).catch(function (err) {
+            console.error(err);
         });
     }
 }
