@@ -4,60 +4,69 @@ const db = require('../../models');
 const router = express.Router();
 
 module.exports = {
-
     // GET route for getting all of the users
-    allUsers: function () {
-        // router.get("/api/users", function (req, res) {
+    // route: /api/users
+    allUsers: function (req, res) {
         db.User.findAll({}).then(function (dbUser) {
             res.json(dbUser);
+        }).then(function (err, data) {
+            if (err) throw err;
+
         });
-        // });
     },
     // Get route for retrieving a single user
-    singleUser: function () {
-        // router.get("/api/users/:id", function (req, res) {
+    // route: /api/user/:id
+    singleUser: function (req, res) {
         db.User.findOne({
             where: {
                 id: req.params.id
             }
-        }).then(function (dbUser) {
-            console.log(dbUser);
-            res.json(dbUser);
+        }).then(function (err, data) {
+            if (err) throw err;
+            res.json(data);
         });
-        // });
     },
     // POST route for saving a new user
-    newUser: function () {
-        // router.post("/api/users", function (req, res) {
-        db.User.create(req.body).then(function (dbUser) {
-            res.json(dbUser);
-        });
-        // });
+    // route: /api/user/new
+    newUser: function (req, res) {
+        console.log(req.body);
+        db.User.create({
+                username: req.body.username,
+                password: req.body.password,
+                email: req.body.email
+            })
+            .then(function (err, data) {
+                if (err) throw err;
+                window.location.href = "/user";
+                return data
+                // res.json(data);
+            });
     },
     // DELETE route for deleting user
-    deleteUser: function () {
-        // router.delete("/api/users/:id", function (req, res) {
+    // Route: /api/user/:id
+    deleteUser: function (req, res) {
         db.User.destroy({
             where: {
                 id: req.params.id
             }
-        }).then(function (dbUser) {
-            res.json(dbUser);
+        }).then(function (err, data) {
+            if (err) throw err;
+            res.json(data);
         });
-        // });
     },
     // PUT route for updating user
-    updateUser: function () {
-        // router.put("/api/users", function (req, res) {
-            db.User.update(
-                req.body, {
+    // route: /api/user/:id
+    updateUser: function (req, res) {
+        console.log(req.body);
+
+        db.User.update(
+            req.body, {
                 where: {
                     id: req.body.id
                 }
-            }).then(function (dbUser) {
-                res.json(dbUser);
-            });
-        // });
+            }).then(function (err, data) {
+            if (err) throw err;
+            res.json(data);
+        });
     }
 }
-//  module.exports = router;
