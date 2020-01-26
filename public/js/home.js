@@ -13,4 +13,10 @@ $(function () {
     const category = $(this).text();
     window.location.href = "/" + category;
   })
-})
+
+//sign up function
+  // signup").on("click", function () {
+  //   const id=$(this).data("id");
+
+  //   window.location.href = "/signup/" + id;
+ });

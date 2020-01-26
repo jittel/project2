@@ -1,3 +1,5 @@
+//TODO: finish setting up my routes for dynamic so that as each web page is opened the webpage name is what that page is.
+
 // *****************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
 //
@@ -49,6 +51,24 @@ app.set('view engine', 'handlebars');
 // =============================================================
 
 app.use('/',allRoutes);
+
+
+app.use('/home', (req, res) => {
+    res.render('home');
+});
+
+app.use('/login', (req,res) => {
+    res.render('login');
+});
+
+app.use('/userpage', (req,res) => {
+    res.render('userpage');
+});
+
+app.use('/addtask', (req, res) => {
+    res.render('addtask');
+})
+
 
 
 // Syncing our sequelize models and then starting our Express app
