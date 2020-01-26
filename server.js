@@ -53,17 +53,21 @@ app.set('view engine', 'handlebars');
 app.use('/',allRoutes);
 
 
-app.get('/home', (req, res) => {
+app.use('/home', (req, res) => {
     res.render('home');
 });
 
-app.get('/login', (req,res) => {
+app.use('/login', (req,res) => {
     res.render('login');
 });
 
-app.get('/userpage', (req,res) => {
+app.use('/userpage', (req,res) => {
     res.render('userpage');
 });
+
+app.use('/addtask', (req, res) => {
+    res.render('addtask');
+})
 
 
 
@@ -74,7 +78,3 @@ db.sequelize.sync({ force: false }).then(function() {
         console.log("App listening on PORT " + PORT);
     });
 });
-
-// app.listen(8080, () => {
-    //console.log ("Server is starting at port" + 8080);
-// })
