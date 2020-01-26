@@ -1,3 +1,5 @@
+//TODO: finish setting up my routes for dynamic so that as each web page is opened the webpage name is what that page is.
+
 // *****************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
 //
@@ -47,6 +49,10 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitia
 // =============================================================
 
 app.use('/',allRoutes);
+
+app.get('/home', )
+
+
 
 
 // Syncing our sequelize models and then starting our Express app
