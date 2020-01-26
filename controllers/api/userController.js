@@ -30,6 +30,21 @@ module.exports = {
             console.error(err);
         });
     },
+    // Get route for retrieving a username
+    // route: /api/user/:username
+    userName: function (req, res) {
+        db.User.findOne({
+            where: {
+                username: req.params.username
+            }
+        }).then(function (data) {
+            console.log(data);
+            
+            res.json(data);
+        }).catch(function (err) {
+            console.error(err);
+        });
+    },
     // POST route for saving a new user
     // route: /api/user/new
     newUser: function (req, res) {
