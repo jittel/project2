@@ -99,7 +99,7 @@ $(document).ready(function() {
       if (data) {
         // If this post exists, prefill our cms forms with its data
         titleInput.val(data.title);
-        bodyInput.val(data.body);
+        descriptionInput.val(data.description);
         postCategorySelect.val(data.category);
         // If we have a post with this id, set a flag for us to know to update the post
         // when we hit submit
@@ -116,7 +116,7 @@ $(document).ready(function() {
       data: task
     })
       .then(function() {
-        window.location.href = "/:id";
+        window.location.href = "/new";
       });
   }
 });
