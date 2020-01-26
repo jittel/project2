@@ -1,74 +1,86 @@
 const express = require("express");
+// Requiring our models
+const db = require('../models');
+const router = express.Router();
 
-
-var router = express.Router();
-const taskController = require("../../controllers/taskController");
-const bidController = require("../../controllers/bidController");
-
-
-// Import the models to use its database functions.
-const db = require("../models");
-
+const user = require("./api/userController");
+const task = require("./api/taskController");
+const picture = require("./api/pictureController");
+const bid = require("./api/bidController");
 
 module.exports = {
+    // test page: delete after development
+    testPage: function (req, res) {
+        console.log('Test page route works');
+        
+        res.render('test');
+    },
+
     // Home page 
-    homePage: function (req, res) {
-        taskController.singleTask()
-        bidController.allBids()
-    }
-}
-// test page 
-router.get('/test', function (req, res) {
+    homePage: async function (req, res) {
+        // const allTasks = await task.allTask(req);
+        // // console.log(allTasks);
+        
+        // res.render("home", {
+        //     allTasks
+        // });
 
-    res.render('test');
-    // res.json("home");
-})
-
-// Task page
-router.get('/task/:id', function (req, res) {
-    db.Task.findAllOne({
-        where: {
-            id: req.params.id
-        }
-    }).then(function (dbTask) {
-        console.log(dbTask);
-        res.render("task", {
-            dbTask
+        db.Task.findAll({
+            raw: true
+        })
+        .then(function (dbTasks) {
+            db.Bid.findAll({
+                raw: true
+            })
+            .then(function (dbBid) {
+                // console.log(dbTask);
+                res.render("home",{
+                    dbTasks:dbTasks,
+                    dbBid:dbBid});
+                // res = dbTask
+            });
         });
-    })
-})
+    },
 
-// User page
-router.get('/user', function (req, res) {
-    db.Task.findAll({})
-        .then(dbTasks => {
-
-            res.render("userpage", {
-                dbTasks
+    // Task page
+    taskPage: function (req, res) {
+        db.Task.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbTask) {
+            console.log(dbTask);
+            res.render("task", {
+                dbTask
             });
         })
-})
+    },
 
-// Login page
-router.get('/login', function (req, res) {
+    // User page
+    userPage: function (req, res) {
+        db.Task.findAll({})
+            .then(dbTasks => {
+                res.render("userpage", {
+                    dbTasks
+                });
+            })
+    },
 
-    res.json("login");
+    // Login page
+    loginPage: function (req, res) {
+        res.json("login");
+    },
 
-})
+    // Create account page
+    createAccPage: function (req, res) {
+        res.render("create-acc");
+    },
 
-// Create account page
-router.get('/create-acc', function (req, res) {
+    // Add task page
 
-    res.render("create-acc");
-
-})
-
-// Add task page
-
-router.get('/add', function (req, res) {
-    res.render("add", {
-        dbTasks
-    });
-
-
-module.exports = router;
+    addTaskPage: function (req, res) {
+        res.render("add", {
+            dbTasks
+        });
+    }
+};

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const bidController = require("../../controllers/bidController");
+const bidController = require("../../controllers/api/bidController");
 
 router.route("/").get(bidController.allBids);
 router.route("/:id")
