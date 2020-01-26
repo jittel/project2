@@ -5,14 +5,15 @@ var taskRoutes = require('./taskRoute');
 var bidRoutes = require('./bidRoute');
 var userRoutes = require('./userRoute');
 
-//gives us the beginning of the url
+// route to this point: /api
 // router.use('/auth',authRoutes);
 router.use('/task',taskRoutes);
 router.use("/bid",bidRoutes);
 router.use('/user',userRoutes);
 
-router.get('/',function(req,res){
-    res.render('index')
-})
+// broken route
+// router.get('/',function(req,res){
+//     res.render('index')
+// })
 
 module.exports = router;

@@ -1,0 +1,47 @@
+{{!-- This is the add/edit a post fixed --}}
+
+<section id="add" class="container">
+  <div class="form-wrap">
+    <h1>Add A Post</h1>
+    <p>Your username will be shared with registered users who reply to your post.</p>
+
+    {{!-- <form> --}}
+      {{!-- Username --}}
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" class="input-box" placeholder="username" maxlength="30"
+          value="{{username}}">
+      </div>
+      {{!-- Email --}}
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" class="input-box" placeholder="email" maxlength="30"
+          value="{{email}}">
+      </div>
+      {{!-- Password --}}
+      <div class="input-group">
+        <label for="password">Enter a password Password</label>
+        <input type="text" name="password" id="password" class="input-box" placeholder="Password" value="{{password}}">
+      </div>
+      {{!-- password cryteria --}}
+      <p>The password must be at least 8 characters with at least one of each of the following characters:</p>
+      <p>Uppercase letter</p>
+      <p>Lowercase letter</p>
+      <p>Number</p>
+      <p>Special character</p>
+      {{!-- Re-enter password --}}
+      <div class="input-group">
+        <label for="rePassword">Enter Password Again</label>
+        <input type="text" name="rePassword" id="rePassword" class="input-box" placeholder="Password"
+          value="{{rePassword}}">
+      </div>
+      {{!-- Form Submit --}}
+      <button type="submit" class="btn btn-reverse" id="submitBtn"> Submit</button>
+    {{!-- </form> --}}
+
+
+    <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
+    <script src="js/createAcc.js"></script>
+
+  </div>
+</section>
