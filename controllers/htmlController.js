@@ -76,8 +76,8 @@ module.exports = {
     },
 
     // Login page
-    loginPage: function(req, res) {
-        res.json("login");
+    loginPage: function (req, res) {
+        res.render("login");
     },
 
     // Create account page

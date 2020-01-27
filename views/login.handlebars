@@ -1,37 +1,43 @@
-<h1>LOGIN PAGE</h1>
+<body>
+    <div class=" section green accent-1">
+        <section id="add" class="container green accent-1">
+            <div class="form-wrap ">
 
-
-<form action="/auth/login"method="POST">
-    <input type="text" name = "name" placeholder="Username">
-    <input type="password" name = "password" placeholder="password" >
-    <input type="submit" value="Go Go go!">
-</form>
-
-<a href="/auth/signup">First time? sign up here!</a>
-
-
-
-
-    <!-- Contact Us -->
-    <div class="section light valign-wrapper">
-      <div class="container">
-        <form>
-          <div class="row">
-            <div class="col s12"><h2 class="section-title">Contact Us</h2></div>
-            <div class="input-field col s6">
-              <input id="first_name" type="text">
-              <label for="first_name">First Name</label>
+                <div class="section light valign-wrapper">
+                    <div class="container">
+                        <form>
+                            <div class="row">
+                                <div class="col s12">
+                                    <h2 class="section-title">Login</h2>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="user_name" type="text">
+                                    <label for="user_name">Username</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="password" type="text">
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <!-- <textarea id="message" class="materialize-textarea"></textarea> -->
+                                    <!-- <label for="message">Message</label> -->
+                                    <a class="waves-effect waves-light btn-large center">Go, go, go!</a>
+                                </div>
+                            </div>
+                            <a href="/auth/signup">First time? sign up here!</a>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text">
-              <label for="last_name">Last Name</label>
-            </div>
-            <div class="input-field col s12">
-              <textarea id="message" class="materialize-textarea"></textarea>
-              <label for="message">Message</label>
-              <a class="waves-effect waves-light btn-large">Button</a>
-            </div>
-          </div>
-        </form>
-      </div>
+        </div>
     </div>
+</body>
+<!-- <form action="/auth/login"method="POST">
+      <input type="text" name = "name" placeholder="Username">
+      <input type="password" name = "password" placeholder="password" >
+      <input type="submit" value="Go Go go!">
+  </form>
+  
+  <a href="/auth/signup">First time? sign up here!</a>
+  
+   -->

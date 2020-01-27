@@ -52,25 +52,6 @@ app.set('view engine', 'handlebars');
 
 app.use('/', allRoutes);
 
-
-app.use('/home', (req, res) => {
-    res.render('home');
-});
-
-app.use('/login', (req,res) => {
-    res.render('login');
-});
-
-app.use('/userpage', (req,res) => {
-    res.render('userpage');
-});
-
-app.use('/addTask', (req, res) => {
-    res.render('addTask');
-})
-
-
-
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: false }).then(function() {
