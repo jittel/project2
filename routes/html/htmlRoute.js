@@ -2,7 +2,7 @@ const router = require("express").Router();
 const htmlController = require("../../controllers/htmlController");
 
 router.route("/").get(htmlController.homePage);
-router.route("/task").get(htmlController.taskPage);
+router.route("/task/:id").get(htmlController.taskPage);
 router.route("/user").get(htmlController.userPage);
 router.route("/add-task").get(htmlController.addTaskPage);
 router.route("/login").get(htmlController.loginPage);

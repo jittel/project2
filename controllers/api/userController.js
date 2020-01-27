@@ -30,20 +30,25 @@ module.exports = {
             console.error(err);
         });
     },
-    // Get route for retrieving a username
+    // Get route for checking a username
     // route: /api/user/:username
     userName: function (req, res) {
-        db.User.findOne({
-            where: {
-                username: req.params.username
-            }
-        }).then(function (data) {
-            console.log(data);
-            
-            res.json(data);
-        }).catch(function (err) {
-            console.error(err);
-        });
+        if (req.params.username.length >= 5) {  
+            db.User.findOne({
+                attributes: ["username"],
+                where: {
+                    username: req.params.username
+                }
+            }).then(function (data) {
+                console.log(data);
+                
+                res.json(data);
+            }).catch(function (err) {
+                console.error(err);
+            });
+        } else {
+            res.json(null);
+        }
     },
     // POST route for saving a new user
     // route: /api/user/new

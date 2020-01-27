@@ -1,26 +1,44 @@
-<!-- Fixed navbar -->
-{{!-- This is a partial --}}
-{{!-- If we go with partials for the navbar we need to register it on the handlebars page. --}}
- <!-- Nav with materialize -->
- 
-  <nav class="red accent-2" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="Jack-logo">Trade Jack</a>
+{{!-- home navbar fixed --}}
+
+{{!-- <nav class="red accent-2 absolute " role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="Jack-logo" style="font-size: 25px">Trade Jack</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/home.handlebars">Home</a></li>
-           <li><a href="/newtask.handlebars">Login</a></li>
-        <li><a href="/newtask.handlebars">New Task</a></li>
-      </ul>
-  </nav>
+        <li class="{{if active_home"active{{/if}} home"><a href="{{id}}">Home</a></li>
+        <li class="{{if active_login"active{{/if}} login"><a href="{{id}}">Login</a></li>
+        <li class="{{if active_addtask"active{{/if}} add task"><a href="{{id}}">Add Task</a></li>
+        <li class="{{if active_team"active{{/if}} add task"><a href="{{id}}">Team</a></li>
+   
+   //
+   
+   
+     <li class="{{if active_home"active{{/if}} home"><a href="{{id}}">Home</a></li>
+        <li class="{{if active_login"active{{/if}} login"><a href="{{id}}">Login</a></li>
+        <li class="{{if active_addtask"active{{/if}} add task"><a href="{{id}}">Add Task</a></li>
+        <li class="{{if active_team"active{{/if}} add task"><a href="{{id}}">Team</a></li> 
+   --}}
+
+<nav class="red accent-2 absolute " role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="#" class="Jack-logo" style="font-size: 25px">Trade
+      Jack</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/">Home</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/add-task">New Task</a></li>
+      <li><a href="/team">Team</a></li>
+    </ul>
+</nav>
+
 
 <!-- Search Listing Jumbotron -->
-  <div class="jumbotron">
+<div class="jumbotron red accent-2">
   <section id="search" class="search-wrap">
     <form action="listings" class="search-form">
+      <div class="input-search">
         <i class="fas fa-search"></i>
         <input type="search" name="term" placeholder="Search Listings">
         </input>
-      <!-- <button type="button" name="Search" id="search">Search</button> -->
+        <!-- <button type="button" name="Search" id="search">Search</button> -->
     </form>
-      </div>
-    </div>
-    </div class="jumbotron"> 
+</div>
+</div>
+</div class="jumbotron">

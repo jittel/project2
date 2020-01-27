@@ -6,12 +6,11 @@
 <header>
      {{> usernav}}
 
-    </header>
-  <script src="js/userpage.js"></script>
+
 </header>
 <body>
   <!-- Listings -->
-  <div class="section green accent-2 full-height">
+  <div class="section green accent-1 full-height">
     <div class="container">
       <div class="row">
         <div class="col s12 center">
@@ -20,7 +19,7 @@
             <h2>My Open Posts</h2>
             <div class="row">
               {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-              {{#each allUserTaskOpen}}
+              {{#each rawData}}
               {{> usercardstp}}
               {{!-- path to home-block partial file --}}
               {{/each}}
@@ -62,5 +61,5 @@
 {{> footer}}
 
 	<!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
-  <script src="js/home.js"></script>
+  <script src="js/userpage.js"></script>
 
