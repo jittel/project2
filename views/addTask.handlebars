@@ -23,8 +23,8 @@
                 value="{{task_price}}">
         </div>
 
-        <div class="input-group category">
-            <!-- Dropdown Trigger -->
+        {{!-- <div class="input-group category"> --}}
+        {{!-- <!-- Dropdown Trigger -->
             <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Category</a>
 
             <!-- Dropdown Structure -->
@@ -44,48 +44,57 @@
                 <li>
                     <option value="tech support">Tech Support</option>
                 </li>
-            </ul>
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    var elems = document.querySelectorAll('.dropdown-trigger');
-                    var instances = M.Dropdown.init(elems, options);
-                });
-            </script>
+            </ul> --}}
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
 
-            <div class="input-group location">
-                <label for="Location">Location</label>
-                <input type="text" name="location" id="location" class="input-box" placeholder="Seattle" maxlength="30"
-                    value="{{location}}">
-            </div>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="#!">three</a></li>
+            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+            <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+        </ul>
+        <script>
+            $('.dropdown-trigger').dropdown();
+        </script>
 
-            <div class="input-group bid_end_time">
-                <label for="bid close date">Bid Close Date</label>
-                <input type="date" name="bid_end_time" id="bid_end_time" class="input-box" placeholder="02-05-20"
-                    value="{{bid_end_date}}">
-            </div>
-
-            <div class="input-group task_start">
-                <label for="Desired Start Date">Desired Start Date</label>
-                <input type="date" name="task_start" id="task_start" class="input-box" placeholder="02-10-20"
-                    value="{{task_start}}">
-            </div>
-
-
-
-
-            <input type="submit" class="btn btn-reverse" id="submitBtn">
-
-            {{!-- ADD IMG UPLOAD BUTTON HERE --}}
-                <label class="file-upload-container" for="file-upload">
-                    <input id="file-upload" type="file" style="display:none" class="btn btn-reverse">
-                    Select an Image
-                </label>
-
-
-            <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
-            <script src="js/addTask.js"></script>
-            <script src="js/addImg.js"></script>
-            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+        <div class="input-group location">
+            <label for="Location">Location</label>
+            <input type="text" name="location" id="location" class="input-box" placeholder="Seattle" maxlength="30"
+                value="{{location}}">
         </div>
+
+        <div class="input-group bid_end_time">
+            <label for="bid close date">Bid Close Date</label>
+            <input type="date" name="bid_end_time" id="bid_end_time" class="input-box" placeholder="02-05-20"
+                value="{{bid_end_date}}">
+        </div>
+
+        <div class="input-group task_start">
+            <label for="Desired Start Date">Desired Start Date</label>
+            <input type="date" name="task_start" id="task_start" class="input-box" placeholder="02-10-20"
+                value="{{task_start}}">
+        </div>
+
+
+
+
+        <input type="submit" class="btn btn-reverse" id="submitBtn">
+
+        {{!-- ADD IMG UPLOAD BUTTON HERE --}}
+        <label class="file-upload-container btn btn-reverse" for="file-upload">
+            <input id="file-upload" type="file" style="display:none">
+            Select an Image
+        </label>
+
+
+        <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
+        <script src="js/addTask.js"></script>
+        <script src="js/addImg.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    </div>
 </section>

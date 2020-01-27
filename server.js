@@ -37,37 +37,20 @@ app.use(express.static("public"));
 var exphbs = require('express-handlebars');
 // Routes
 // =============================================================
-// const taskRoutes = require('./controllers/taskController');
-
-
-// app.use("/api/task", taskRoutes);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true,cookie:{maxAge: 7200000} }));
 //initializing sessions on our server, basically boilerplate
-// app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true,cookie:{maxAge: 7200000} }));
 
 // Routes
 // =============================================================
+const authRoutes = require('./controllers/api/authController');
+
+
+app.use("/auth", authRoutes);
 
 app.use('/', allRoutes);
-
-
-app.use('/home', (req, res) => {
-    res.render('home');
-});
-
-app.use('/login', (req,res) => {
-    res.render('login');
-});
-
-app.use('/userpage', (req,res) => {
-    res.render('userpage');
-});
-
-app.use('/addTask', (req, res) => {
-    res.render('addTask');
-})
 
 
 
