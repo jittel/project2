@@ -65,8 +65,8 @@ app.use('/userpage', (req,res) => {
     res.render('userpage');
 });
 
-app.use('/addtask', (req, res) => {
-    res.render('addtask');
+app.use('/addTask', (req, res) => {
+    res.render('addTask');
 })
 
 
