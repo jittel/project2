@@ -43,12 +43,10 @@ module.exports = {
     },
 
     // Task page
-    taskPage: function(req, res) {
-        db.Task.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then(function(dbTask) {
+
+    taskPage: function (req, res) {
+        db.Task.findAll({}).then(function (dbTask) {
+
             console.log(dbTask);
             res.render("task", {
                 dbTask
@@ -89,8 +87,8 @@ module.exports = {
     },
 
     // Login page
-    loginPage: function(req, res) {
-        res.json("login");
+    loginPage: function (req, res) {
+        res.render("login");
     },
 
     // Create account page
@@ -100,9 +98,16 @@ module.exports = {
 
     // Add task page
 
-    addTaskPage: function(req, res) {
-        res.render("add", {
-            dbTasks
-        });
+
+    addTaskPage: function (req, res) {
+        // db.Task.create(req.body).then(function (dbTask) {
+        //     res.render("addTask", {dbTask});
+        // });
+        // res.render("add", {
+        //     dbTasks
+        // });
+        // console.log(res.body)
+        res.render("addTask")
+
     }
 };

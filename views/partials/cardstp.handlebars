@@ -1,21 +1,24 @@
- {{!-- listing --}}
+
+{{!-- listing --}}
 {{!-- This is a card --}}
-    <div class="col s12 m4">
-        <div class="card">
-            <div class="card-image">
-              {{#each Pictures}}
-                <a href=" "><img src={{link}}></a>
-                {{/each}}
-            </div>
-            <div class="card-content">
-                <span class="card-title">Task: {{title}} </span>
-                <h6>Location: {{location}}</h6>
-                <h6>Intitial Price: ${{initial_price}}</h6>
-                {{#each Bids}}
-                <h6>Current Bid: ${{bid_price}}</h6>
-                {{/each}}
-                <h6>Bid End Time: {{bid_end_time}}</h6>
-                <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light red">Bid</a>
-            </div>
-        </div>
+<div class="col s12 m4">
+  <div class="card">
+    <div class="card-image">
+      {{#each Pictures}}
+        <a href=" "><img src={{link}}></a>
+        {{/each}}
     </div>
+    <div class="card-content">
+        <span class="card-title">Task: {{title}} </span>
+        <h6>Location: {{location}}</h6>
+        <h6>Intitial Price: ${{initial_price}}</h6>
+        {{#each Bids}}
+        <h6>Current Bid: ${{bid_price}}</h6>
+        {{/each}}
+        <h6>Bid End Time: {{bid_end_time}}</h6>
+        <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light red">Bid</a>
+    </div>
+  </div>
+</div>
+
+{{!-- </div> --}}
