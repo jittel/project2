@@ -32,7 +32,7 @@ $(function () {
       if (err) throw err;
       console.log("LOOK AT ME")
       console.log(data)
-      alert("Your new account has been created")
+      alert("Your new task has been created")
       window.location.href = "/api/task";
     })
   })
