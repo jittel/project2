@@ -19,6 +19,7 @@ $(function () {
       bid_end_time: bid_end_time.val().trim(),
       task_start: task_start.val().trim(),
       category: "stuff",
+      // category.val().trim(),
       location: location.val().trim(),
       initial_price: initial_price.val().trim()
     };
