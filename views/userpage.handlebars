@@ -1,70 +1,65 @@
 {{!-- Basically the "landing" page so it should be a replica of home.handlebars --}}
 
-    <title>Trade Jack | Outdoor, Indoor, Misc. Tasks</title>
+<title>Trade Jack | Outdoor, Indoor, Misc. Tasks</title>
 </head>
 {{!-- Updated the Navbar TP --}}
-<body>
-    <header>
+<header>
      {{> usernav}}
 
     </header>
-
-    {{{body}}}
-   
-
- <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED TP -->
-
   <script src="js/userpage.js"></script>
-
-</div> 
 </header>
+<body>
+  <!-- Listings -->
+  <div class="section green accent-2 full-height">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center">
+          <h1>My Listings</h1>
+          <div class="row masonry-grid">
+            <h2>My Open Posts</h2>
+            <div class="row">
+              {{!-- Insert here each , unless , path to block and closeing unless and each --}}
+              {{#each allUserTaskOpen}}
+              {{> usercardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+
+          <h2>My Closed Posts</h2>
+            <div class="row">
+              {{!-- Insert here each , unless , path to block and closeing unless and each --}}
+              {{#each allUserTaskClosed}}
+              {{> usercardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+
+          <h2>My Open Bids</h2>
+            <div class="row">
+              {{!-- Insert here each , unless , path to block and closeing unless and each --}}
+              {{#each dbOpenBids}}
+              {{> usercardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+
+          <h2>My Closed Bids</h2>
+            <div class="row">
+              {{!-- Insert here each , unless , path to block and closeing unless and each --}}
+              {{#each dbClosedBids}}
+              {{> usercardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
-  {{!-- <div class="container">
-    <div class="section"> --}}
-
-{{!-- {{> cardstp}} --}}
-{{!-- {{> categorytp }} --}}
-
-<h2>My Open Posts</h2>
-  <div class="row">
-    {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-    {{#each allUserTaskOpen}}
-    {{> usercardstp-block}}
-    {{!-- path to home-block partial file --}}
-    {{/each}}
-  </div>
-
-<h2>My Closed Posts</h2>
-  <div class="row">
-    {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-    {{#each allUserTaskClosed}}
-    {{> usercardstp-block}}
-    {{!-- path to home-block partial file --}}
-    {{/each}}
-  </div>
-
-<h2>My Open Bids</h2>
-  <div class="row">
-    {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-    {{#each dbOpenBids}}
-    {{> usercardstp-block}}
-    {{!-- path to home-block partial file --}}
-    {{/each}}
-  </div>
-
-<h2>My Closed Bids</h2>
-  <div class="row">
-    {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-    {{#each dbClosedBids}}
-    {{> usercardstp-block}}
-    {{!-- path to home-block partial file --}}
-    {{/each}}
-  </div>
-
-
 {{> footer}}
-</div>
 
 	<!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
   <script src="js/home.js"></script>

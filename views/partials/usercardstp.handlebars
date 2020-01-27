@@ -1,23 +1,21 @@
+      {{!-- Add search button to search for tasks on the home page --}}
+{{!-- Two partials 1 being home page tasks and 2 being userpage --}}
+{{!-- This one can be my home page partial --}}
 
-    <!-- Listings -->
-    <div class="section green accent-2 full-height">
-      <div class="container">
-        <div class="row">
-          <div class="col s12 center">
-            <h1>My Listings</h1>
-            <div class="row masonry-grid">
-              <div class="col s12 m6 l4">
-                <div class="card">
-                  <div class="card-image">
-                    <a href=" "><img src="http://placehold.it/600x400"></a>
-                    <span class="card-title">Something Interesting</span>
-                    <div class="card-content">
+{{!-- This is a card --}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                <a href=" "><img src="http://placehold.it/600x400"></a>
+            </div>
+            <div class="card-content">
                 <span class="card-title">Task: {{title}} </span>
                 <h6>Location: {{location}}</h6>
                 <h6>Intitial Price: ${{initial_price}}</h6>
                 <h6>Current Bid: ${{current_bid}}</h6>
                 <h6>Bid End Time: {{bid_end_time}}</h6>
-                <div class="row center">
-        <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light red">Bid</a>
-      </div>
+                <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light red">Bid</a>
+            </div>
+        </div>
+    </div>
             

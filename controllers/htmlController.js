@@ -61,7 +61,7 @@ module.exports = {
     // User page
     userPage: function(req, res) {
         var query = {
-            UserId: 1,
+            // UserId: 1
             // bid_close_time: { gt: Sequelize.literal('CURRENT_TIMESTAMP') }
         };
         db.Task.findAll({
