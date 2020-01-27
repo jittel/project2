@@ -108,8 +108,8 @@ module.exports = {
 
 
     // Get route for retrieving a single post
+    // route api/task/:id
     singleTask: function(req, res) {
-        // router.get("/:id", function (req, res) {
         db.Task.findOne({
             where: {
                 id: req.params.id
@@ -120,7 +120,6 @@ module.exports = {
         }).catch(function(err) {
             console.error(err);
         });
-        // });
     },
 
     // create a task

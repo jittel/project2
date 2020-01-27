@@ -31,7 +31,9 @@ module.exports = {
                 ['bid_price', 'ASC', ]
             ],
             limit: 1
-        }, { model: db.Picture }];
+        }, {
+            model: db.Picture
+        }];
         db.Task.findAll({
 
             where: {
@@ -40,12 +42,14 @@ module.exports = {
                 }
             },
             include: query
-        }).then(function(allUserTaskOpen) {
+        }).then(function (allUserTaskOpen) {
             // const raw = [];
             // for (let i = 0; i < allUserTasksOpen.length; i++) {
             //     raw.push(allUserTaskOpen[i].get({ plain: true }))
             // }
-            const rawData = allUserTaskOpen.map(seqObj => seqObj.get({ plain: true }))
+            const rawData = allUserTaskOpen.map(seqObj => seqObj.get({
+                plain: true
+            }))
             console.log(rawData);
             // res.json(rawData)
             res.render("home", {
@@ -56,14 +60,30 @@ module.exports = {
 
     // Task page
 
-    taskPage: function(req, res) {
-        db.Task.findAll({}).then(function(dbTask) {
-
-            console.log(dbTask);
+    taskPage: async function (req, res) {
+        var query = [{
+            model: db.Bid,
+            order: [
+                ['bid_price', 'ASC', ]
+            ],
+            limit: 1
+        }, {
+            model: db.Picture
+        }];
+        db.Task.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: query
+        }).then(function (allUserTaskOpen) {
+            const rawData = allUserTaskOpen.get({
+                plain: true
+            })
+            console.log(rawData);
             res.render("task", {
-                dbTask
+                rawData
             });
-        })
+        }).catch(err => console.log(err))
     },
 
     // User page
@@ -123,23 +143,23 @@ module.exports = {
                             })
                     });
             }).catch(err => console.log(err))
+
     },
 
     // Login page
-
     loginPage: function(req, res) {
         res.render("login");
     },
 
     // Create account page
-    createAccPage: function(req, res) {
+    createAccPage: function (req, res) {
         res.render("create-acc");
     },
 
     // Add task page
 
 
-    addTaskPage: function(req, res) {
+    addTaskPage: function (req, res) {
         // db.Task.create(req.body).then(function (dbTask) {
         //     res.render("addTask", {dbTask});
         // });
