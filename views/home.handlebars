@@ -21,11 +21,12 @@
   </nav>
   <div>
 
-	  {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-{{#each dbTasks}}
-{{> taskcard-block}}
-{{!-- path to home-block partial file --}}
-{{/each}}
+<div class="row">  {{!-- Insert here each , unless , path to block and closeing unless and each --}}
+  {{#each dbTasks}}
+  {{> taskcard-block}}
+  {{!-- path to home-block partial file --}}
+  {{/each}}
+</div>
     <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js">
 </script>
