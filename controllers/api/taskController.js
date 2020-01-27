@@ -1,5 +1,6 @@
 var express = require("express");
-var sequelize = require("sequelize")
+var sequelize, { Op } = require("sequelize")
+var moment = require("moment")
 
 var router = express.Router();
 
@@ -28,49 +29,81 @@ module.exports = {
     },
     allUserTaskOpen: function(req, res) {
         var myDate = new Date();
-        var query = {
-            UserId: 1,
-            include: [{
-                    model: db.bid,
-                    where: {
-                        attributes: [
-                            [sequelize.fn('min', sequelize.col('price')), 'minPrice']
-                        ]
-                    }
-                }, { model: db.Picture }]
-                // bid_close_time: {
-                //     $gt: myDate,
-                // },
-        };
-        db.Task.findAll({
-            raw: true,
-            where: query
-        }).then(function(allUserTaskOpen) {
-            console.log(allUserTaskOpen);
+        var myMoment = moment();
+        myMoment.subtract(1, 'day');
+        var query = [{
+                model: db.Bid,
+                order: [
+                    ['bid_price', 'ASC', ]
+                ],
+                limit: 1
+            }, { model: db.Picture }]
+            // bid_close_time: {
+            //     $gt: myDate,
+            // },
+        ;
+        return db.Task.findAll({
 
-            res.render("userpage", {
-                allUserTaskOpen
-            });
-        })
+                where: {
+                    UserId: req.session.userid,
+                    // UserId: 1,
+                    bid_end_time: {
+                        [Op.lte]: myMoment
+                    }
+                },
+                include: query
+            })
+            // .then(function(allUserTaskOpen) {
+            //     // const raw = [];
+            //     // for (let i = 0; i < allUserTasksOpen.length; i++) {
+            //     //     raw.push(allUserTaskOpen[i].get({ plain: true }))
+            //     // }
+            //     const openData = allUserTaskOpen.map(seqObj => seqObj.get({ plain: true }))
+            //     console.log(openData);
+            //     // res.json(openData)
+            //     res.render("userpage", {
+            //         openData
+            //     });
+            // }).catch(err => console.log(err))
 
 
     },
     allUserTaskClosed: function(req, res) {
-        var query = {
-            UserId: 1,
-            bid_close_time: { lt: toDate() }
-        };
-        db.Task.findAll({
-            raw: true,
-            where: query
-        }).then(function(allUserTaskClosed) {
-            console.log(allUserTaskClosed);
+        var myDate = new Date();
+        var myMoment = moment();
+        myMoment.subtract(1, 'day');
+        var query = [{
+            model: db.Bid,
+            order: [
+                ['bid_price', 'ASC', ]
+            ],
+            limit: 1
+        }, { model: db.Picture }]
 
-            res.json(allUserTaskClosed);
-            // return allTasks
-        });
+        ;
+        return db.Task.findAll({
 
-        // res.json('task index route!')
+                where: {
+                    UserId: req.session.userid,
+                    // UserId: 1,
+                    bid_end_time: {
+                        [Op.gte]: myMoment
+                    }
+                },
+                include: query
+            })
+            // .then(function(allUserTaskClosed) {
+            //     // const raw = [];
+            //     // for (let i = 0; i < allUserTasksOpen.length; i++) {
+            //     //     raw.push(allUserTaskOpen[i].get({ plain: true }))
+            //     // }
+            //     const closedData = allUserTaskClosed.map(seqObj => seqObj.get({ plain: true }))
+            //     console.log(closedData);
+            //     // res.json(closedData)
+            //     res.render("userpage", {
+            //         closedData
+            //     });
+            // }).catch(err => console.log(err))
     },
 
 

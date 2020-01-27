@@ -45,29 +45,12 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 //initializing sessions on our server, basically boilerplate
-// app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true,cookie:{maxAge: 7200000} }));
+// app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true, cookie: { maxAge: 7200000 } }));
 
 // Routes
 // =============================================================
 
 app.use('/', allRoutes);
-
-
-app.use('/home', (req, res) => {
-    res.render('home');
-});
-
-app.use('/login', (req, res) => {
-    res.render('login');
-});
-
-app.use('/userpage', (req, res) => {
-    res.render('userpage');
-});
-
-app.use('/addtask', (req, res) => {
-    res.render('addtask');
-})
 
 
 // Syncing our sequelize models and then starting our Express app
