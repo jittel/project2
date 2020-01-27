@@ -18,6 +18,8 @@ module.exports = {
 
             res.json(allTasks);
             // return allTasks
+        }).catch(function (err) {
+            console.error(err);
         });
 
         // res.json('task index route!')
@@ -68,14 +70,28 @@ module.exports = {
         }).then(function(dbTask) {
             console.log(dbTask);
             res.json(dbTask);
+        }).catch(function (err) {
+            console.error(err);
         });
         // });
     },
 
     // create a task
-    newTask: function(req, res) {
-        db.Task.create(req.body).then(function(dbTask) {
+
+    newTask: function (req, res) {
+        db.Task.create({
+            title: req.body.title,
+            description: req.body.description,
+            bid_end_time: req.body.bid_end_time,
+            task_start: req.body.task_start,
+            category: req.body.category,
+            location: req.body.location,
+            initial_price: req.body.initial_price
+        }).then(function (dbTask) {
+
             res.json(dbTask);
+        }).catch(function (err) {
+            console.error(err);
         });
     },
 
@@ -84,11 +100,15 @@ module.exports = {
         // router.put("/:id", function (req, res) {
         db.Task.update(
             req.body, {
-                where: {
-                    id: req.body.id
-                }
-            }).then(function(dbTask) {
+
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbTask) {
+
             res.json(dbTask);
+        }).catch(function (err) {
+            console.error(err);
         });
         // });
     },
@@ -103,6 +123,8 @@ module.exports = {
             }
         }).then(function(dbPost) {
             res.json(dbPost);
+        }).catch(function (err) {
+            console.error(err);
         });
         // });
     }

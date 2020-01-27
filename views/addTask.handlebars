@@ -6,69 +6,87 @@
         <h1>Add A Post</h1>
         <p>Your username will be shared with registered users who reply to your post.</p>
 
-        <form action="/posts/add" method="POST">
-            <div class="input-group">
-                <label for="title">Job Title</label>
-                <input type="text" name="title" id="title" class="input-box" placeholder="Mow Lawn, setup modem, etc"
-                    maxlength="100" value="{{title}}">
-            </div>
+        <div class="input-group title">
+            <label for="title">Job Title</label>
+            <input type="text" name="title" id="title" class="input-box" placeholder="Mow Lawn, setup modem, etc"
+                maxlength="100" value="{{title}}">
+        </div>
 
-            <div class="input-group">
-                <label for="description">Task Description</label>
-                <input type="text" name="description" id="description" class="input-box"
-                    placeholder="Enter task description" value="{{description}}">
-            </div>
+        <div class="input-grou descriptionp">
+            <label for="description">Task Description</label>
+            <input type="text" name="description" id="description" class="input-box"
+                placeholder="Enter task description" value="{{description}}">
+        </div>
 
-            <div class="input-group">
-                <label for="price">Price</label>
-                <input type="text" name="task_price" id="task_price" class="input-box" placeholder="eg. $100"
-                    value="{{task_price}}">
-            </div>
+        <div class="input-group task_price">
+            <label for="price">Price</label>
+            <input type="text" name="task_price" id="task_price" class="input-box" placeholder="eg. $100"
+                value="{{task_price}}">
+        </div>
 
-            <div class="input-group">
-                <label for="Category">Category</label>
-                {{!-- <input type="text" name="category" id="category"> --}}
-                <select name="category" id="category">
-                    <option value="" disabled selected hidden>Choose a Category</option>
+        <div class="input-group category">
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Category</a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                <li>
                     <option value="home">Home</option>
+                </li>
+                <li>
                     <option value="yard & garden">Yard and Garden</option>
+                </li>
+                <li>
                     <option value="deliver">Delivery</option>
+                </li>
+                <li>
                     <option value="personal care">Personal Care</option>
+                </li>
+                <li>
                     <option value="tech support">Tech Support</option>
-                </select>
-            </div>
+                </li>
+            </ul>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var elems = document.querySelectorAll('.dropdown-trigger');
+                    var instances = M.Dropdown.init(elems, options);
+                });
+            </script>
 
-            <div class="input-group">
+            <div class="input-group location">
                 <label for="Location">Location</label>
-                <input type="text" name="location" id="location" class="input-box" placeholder="eg. $100" maxlength="30"
+                <input type="text" name="location" id="location" class="input-box" placeholder="Seattle" maxlength="30"
                     value="{{location}}">
             </div>
 
-            <div class="input-group">
+            <div class="input-group bid_end_time">
                 <label for="bid close date">Bid Close Date</label>
                 <input type="date" name="bid_end_time" id="bid_end_time" class="input-box" placeholder="02-05-20"
                     value="{{bid_end_date}}">
             </div>
 
-            <div class="input-group">
+            <div class="input-group task_start">
                 <label for="Desired Start Date">Desired Start Date</label>
                 <input type="date" name="task_start" id="task_start" class="input-box" placeholder="02-10-20"
                     value="{{task_start}}">
             </div>
 
 
-            <input type="submit" value="Add Post" class="btn btn-reverse" id="submitBtn">
-        </form>
+
+            <input type="submit" class="btn btn-reverse" id="submitBtn">
+
+            {{!-- ADD IMG UPLOAD BUTTON HERE --}}
+                <label class="file-upload-container" for="file-upload">
+                    <input id="file-upload" type="file" style="display:none" class="btn btn-reverse">
+                    Select an Image
+                </label>
 
 
-{{> footer}}
-    </div>
+            <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
+            <script src="js/addTask.js"></script>
+            <script src="js/addImg.js"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-	<!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
-  <script src="js/home.js"></script>
-        <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
-        <script src="js/add.js"></script>
-
-    </div>
+        </div>
 </section>
 
