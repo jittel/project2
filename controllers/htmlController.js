@@ -76,11 +76,7 @@ module.exports = {
     },
 
     // Login page
-<<<<<<< HEAD
-    loginPage: function(req, res) {
-=======
     loginPage: function (req, res) {
->>>>>>> 443e2eccaa71cb3a0814983d4e4e8c1380688c0e
         res.render("login");
     },
 
