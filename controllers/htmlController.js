@@ -113,8 +113,7 @@ module.exports = {
     },
 
     // Login page
-    loginPage: function (req, res) {
-
+    loginPage: function(req, res) {
         res.render("login");
     },
 

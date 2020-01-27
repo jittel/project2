@@ -1,8 +1,10 @@
+{{> lognav}}
 <body>
 
-    <div class="section green accent-2 valign-wrapper">
+    <div class="section green accent-1 valign-wrapper">
         <div class="container">
             <form>
+                <br>
                 <div class="row">
                     <div class="col s12">
                         <h2 class="section-title">Login</h2>
@@ -20,9 +22,15 @@
                         <!-- <label for="message">Message</label> -->
                         <a class="waves-effect waves-light btn-large center">Go, go, go!</a>
                     </div>
+                    {{!-- </div> --}}
+                    <a href="/auth/signup">First time? sign up here!</a>
+                    {{!-- </form> --}}
                 </div>
-                <a href="/auth/signup">First time? sign up here!</a>
-            </form>
+                  <br><br><br>
+             </div>    
         </div>
     </div>
 </body>
+
+{{> footer}}
+</html>
