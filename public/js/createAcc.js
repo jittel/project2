@@ -25,19 +25,22 @@ $(function () {
         password: password.val().trim(),
         email: email.val().trim(),
       };
-      // console.log(userData);
-
+      
       $.ajax({
-        method: "POST",
+        type: "POST",
         url: "/api/user/new",
-        data: userData
-      }).then(function (err, data) {
-        if (err) throw err;
-        console.log(data)
-        alert("Your new account has been created")
-        window.location.href = "/user";
+        data: userData,
 
-      })
+     success: function(data){
+                console.log(data);
+                console.log("success");
+                alert("Your new account has been created");
+                window.location.href = "/user";
+            },
+    error:function (msg) {
+                console.log("error on page");
+            }           
+        });
     }
   })
 
