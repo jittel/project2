@@ -44,11 +44,7 @@ module.exports = {
 
     // Task page
     taskPage: function (req, res) {
-        db.Task.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbTask) {
+        db.Task.findAll({}).then(function (dbTask) {
             console.log(dbTask);
             res.render("task", {
                 dbTask
