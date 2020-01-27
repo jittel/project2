@@ -45,7 +45,14 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: true
             }
         });
-        Tasks.belongsToMany(models.User, { through: "UserTask" })
+        Tasks.belongsToMany(models.User, { through: "UserTask" });
+        // Tasks.belongsToMany(models.Bid, { through: "TaskId" });
+        Tasks.hasMany(models.Bid, {
+            onDelete: "cascade"
+        });
+        Tasks.hasMany(models.Picture, {
+            onDelete: "cascade"
+        });
     };
 
     return Tasks;

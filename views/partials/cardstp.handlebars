@@ -1,99 +1,24 @@
-<!-- Listings -->
-<div class="red accent-2">
-  <div class="section red accent-2 full-height">
-    <div class="container">
-      <div class="row">
-        <div class="col s12 center">
-          <h1 class="white-text">Listings</h1>
-          <div class="row masonry-grid">
-            <div class="col s12 m6 l4">
-              <div class="card">
-                <div class="card-image">
-                  <a href=" "><img src="http://placehold.it/600x400"></a>
-                  <div class="card-content">
-                    <span class="card-title">Task: {{title}} </span>
-                    <h6>Location: {{location}}</h6>
-                    <h6>Intitial Price: ${{initial_price}}</h6>
-                    <h6>Current Bid: ${{current_bid}}</h6>
-                    <h6>Bid End Time: {{bid_end_time}}</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m6 l4">
-              <div class="card">
-                <div class="card-image">
-                  <a href=" "><img src="http://placehold.it/600x400"></a>
-                  <div class="card-content">
-                    <span class="card-title">Task: {{title}} </span>
-                    <h6>Location: {{location}}</h6>
-                    <h6>Intitial Price: ${{initial_price}}</h6>
-                    <h6>Current Bid: ${{current_bid}}</h6>
-                    <h6>Bid End Time: {{bid_end_time}}</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m6 l4">
-              <div class="card">
-                <div class="card-image">
-                  <a href=" "><img src="http://placehold.it/600x400"></a>
-                  <div class="card-content">
-                    <span class="card-title">Task: {{title}} </span>
-                    <h6>Location: {{location}}</h6>
-                    <h6>Intitial Price: ${{initial_price}}</h6>
-                    <h6>Current Bid: ${{current_bid}}</h6>
-                    <h6>Bid End Time: {{bid_end_time}}</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 m6 l4">
-            <div class="card">
-              <div class="card-image">
-                <a href=" "><img src="http://placehold.it/600x400"></a>
-                <div class="card-content">
-                  <span class="card-title">Task: {{title}} </span>
-                  <h6>Location: {{location}}</h6>
-                  <h6>Intitial Price: ${{initial_price}}</h6>
-                  <h6>Current Bid: ${{current_bid}}</h6>
-                  <h6>Bid End Time: {{bid_end_time}}</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 m6 l4">
-            <div class="card">
-              <div class="card-image">
-                <a href=" "><img src="http://placehold.it/600x400"></a>
-                <div class="card-content">
-                  <span class="card-title">Task: {{title}} </span>
-                  <h6>Location: {{location}}</h6>
-                  <h6>Intitial Price: ${{initial_price}}</h6>
-                  <h6>Current Bid: ${{current_bid}}</h6>
-                  <h6>Bid End Time: {{bid_end_time}}</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 m6 l4">
-            <div class="card">
-              <div class="card-image">
-                <a href=" "><img src="http://placehold.it/600x400"></a>
-                <div class="card-content">
-                  <span class="card-title">Task: {{title}} </span>
-                  <h6>Location: {{location}}</h6>
-                  <h6>Intitial Price: ${{initial_price}}</h6>
-                  <h6>Current Bid: ${{current_bid}}</h6>
-                  <h6>Bid End Time: {{bid_end_time}}</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+{{!-- listing --}}
+{{!-- This is a card --}}
+<div class="col s12 m4">
+  <div class="card">
+    <div class="card-image">
+      {{#each Pictures}}
+        <a href=" "><img src={{link}}></a>
+        {{/each}}
+    </div>
+    <div class="card-content">
+        <span class="card-title">Task: {{title}} </span>
+        <h6>Location: {{location}}</h6>
+        <h6>Intitial Price: ${{initial_price}}</h6>
+        {{#each Bids}}
+        <h6>Current Bid: ${{bid_price}}</h6>
+        {{/each}}
+        <h6>Bid End Time: {{bid_end_time}}</h6>
+        <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light red">Bid</a>
     </div>
   </div>
 </div>
+
 {{!-- </div> --}}

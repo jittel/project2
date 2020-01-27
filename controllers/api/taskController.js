@@ -1,4 +1,5 @@
 var express = require("express");
+var sequelize = require("sequelize")
 
 var router = express.Router();
 
@@ -13,21 +14,33 @@ module.exports = {
         db.Task.findAll({
             raw: true,
             where: query
+
         }).then(function(allTasks) {
             console.log(allTasks);
 
             res.json(allTasks);
             // return allTasks
-        }).catch(function (err) {
+        }).catch(function(err) {
             console.error(err);
         });
 
         // res.json('task index route!')
     },
     allUserTaskOpen: function(req, res) {
+        var myDate = new Date();
         var query = {
             UserId: 1,
-            bid_close_time: { gt: toDate() }
+            include: [{
+                    model: db.bid,
+                    where: {
+                        attributes: [
+                            [sequelize.fn('min', sequelize.col('price')), 'minPrice']
+                        ]
+                    }
+                }, { model: db.Picture }]
+                // bid_close_time: {
+                //     $gt: myDate,
+                // },
         };
         db.Task.findAll({
             raw: true,
@@ -35,11 +48,12 @@ module.exports = {
         }).then(function(allUserTaskOpen) {
             console.log(allUserTaskOpen);
 
-            res.json(allUserTaskOpen);
-            // return allTasks
-        });
+            res.render("userpage", {
+                allUserTaskOpen
+            });
+        })
 
-        // res.json('task index route!')
+
     },
     allUserTaskClosed: function(req, res) {
         var query = {
@@ -70,14 +84,15 @@ module.exports = {
         }).then(function(dbTask) {
             console.log(dbTask);
             res.json(dbTask);
-        }).catch(function (err) {
+        }).catch(function(err) {
             console.error(err);
         });
         // });
     },
 
     // create a task
-    newTask: function (req, res) {
+
+    newTask: function(req, res) {
         db.Task.create({
             title: req.body.title,
             description: req.body.description,
@@ -86,9 +101,11 @@ module.exports = {
             category: req.body.category,
             location: req.body.location,
             initial_price: req.body.initial_price
-        }).then(function (dbTask) {
+
+        }).then(function(dbTask) {
+
             res.json(dbTask);
-        }).catch(function (err) {
+        }).catch(function(err) {
             console.error(err);
         });
     },
@@ -99,13 +116,13 @@ module.exports = {
         db.Task.update(
             req.body, {
 
-            where: {
-                id: req.body.id
-            }
-        }).then(function (dbTask) {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbTask) {
 
             res.json(dbTask);
-        }).catch(function (err) {
+        }).catch(function(err) {
             console.error(err);
         });
         // });
@@ -121,7 +138,7 @@ module.exports = {
             }
         }).then(function(dbPost) {
             res.json(dbPost);
-        }).catch(function (err) {
+        }).catch(function(err) {
             console.error(err);
         });
         // });
