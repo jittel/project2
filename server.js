@@ -50,7 +50,7 @@ app.set('view engine', 'handlebars');
 // Routes
 // =============================================================
 
-app.use('/',allRoutes);
+app.use('/', allRoutes);
 
 
 // Syncing our sequelize models and then starting our Express app

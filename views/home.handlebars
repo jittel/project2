@@ -12,9 +12,33 @@
       <div class="row center">
         <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light red">Sign up</a>
       </div>
+<<<<<<< HEAD
 <br><br><br>
 
 {{> cardstp }}
+=======
+
+	  	{{!-- {{> categorytp}} --}}
+
+    <!-- Listings -->
+    <div class="section yellow full-height">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 center">
+            <h1>Listings</h1>
+            <div class="row masonry-grid">
+              {{!-- {{> cardstp}} --}}
+              {{!-- {{> categorytp }} --}}
+              {{#each dbTasks}}
+                {{> cardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+>>>>>>> 04a46683c27484f2d218fa151fe308216202cd8b
 
       <div class="row center">
 		  {{> categorytp}}
