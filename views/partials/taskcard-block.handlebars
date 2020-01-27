@@ -1,8 +1,12 @@
- {{!-- listing --}}
- <div class="col s12 m4">
+{{!-- Add search button to search for tasks on the home page --}}
+{{!-- Two partials 1 being home page tasks and 2 being userpage --}}
+{{!-- This one can be my home page partial --}}
+
+{{!-- This is a card --}}
+    <div class="col s12 m4">
         <div class="card">
             <div class="card-image">
-                <a href=" "><img src="http://placehold.it/600x400"></a>
+                <img src="{{link}}" alt="{{title}}">
             </div>
             <div class="card-content">
                 <span class="card-title">Task: {{title}} </span>
@@ -10,7 +14,7 @@
                 <h6>Intitial Price: ${{initial_price}}</h6>
                 <h6>Current Bid: ${{current_bid}}</h6>
                 <h6>Bid End Time: {{bid_end_time}}</h6>
-                <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light red">Bid</a>
             </div>
         </div>
     </div>
+

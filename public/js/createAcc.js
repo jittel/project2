@@ -76,9 +76,10 @@ $(function () {
 
       if (data === null) {
         formCheck[0] = true;
-        console.log("this username available");
+        // console.log("this username available");
         $("#note1").remove();
       } else {
+        formCheck[0] = false;
         console.log("this username is taken");
         $("#note1").remove();
       $(".username").append(`<p class="note1" style="color: red;">* this username is already taken</p>`);
@@ -91,7 +92,7 @@ $(function () {
     // const passArr = password.map();
     if (password.val().trim().length >= 8) {
       formCheck[1] = true;
-      console.log("the password is valid");
+      // console.log("the password is valid");
       $("#note2").remove();
     } else {
       formCheck[1] = false;
@@ -105,7 +106,7 @@ $(function () {
   function checkPasswordMatch() {
     if (rePassword.val().trim() === password.val().trim()) {
       formCheck[2] = true;
-      console.log("passwords match");
+      // console.log("passwords match");
       $("#note3").remove();
     } else {
       formCheck[2] = false;
@@ -118,7 +119,7 @@ $(function () {
   // Check email functions to be called when user enters value and when submit button is pressed
   function checkEmail() {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.val().trim())) {
-      console.log("email is valid");
+      // console.log("email is valid");
       formCheck[3] = true;
       $("#note4").remove();
     } else {
