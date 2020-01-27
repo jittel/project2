@@ -22,7 +22,7 @@ module.exports = {
         var query = [{
             model: db.Bid,
             order: [
-                ['bid_price', 'DESC', ]
+                ['bid_price', 'ASC', ]
             ],
             limit: 1
         }, { model: db.Picture }];
@@ -62,7 +62,7 @@ module.exports = {
         var query = [{
                 model: db.Bid,
                 order: [
-                    ['bid_price', 'DESC', ]
+                    ['bid_price', 'ASC', ]
                 ],
                 limit: 1
             }, { model: db.Picture }]
