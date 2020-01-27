@@ -3,27 +3,49 @@
 	{{> nav}}
 </header>
 
-<body>
-	<div class="section green accent-1 ">
-		<h1 class="header center red-text">Welcome to Trade Jack</h1>
-		<div class="row center">
-			<h5 class="header col s12 light">A quick and easy way to hire help!</h5>
-		</div>
-		<div class="row center">
-			<a href="/" id="download-button" class="btn-large waves-effect waves-light red">Sign up</a>
-		</div>
-			<br><br><br>
-	</div>
-	
-	<div>
-		{{> cardstp }}
-	</div>
-	{{!-- 
-		<div class="row center">
-			{{> categorytp}} --}}
-	</div>
+<div class="section gray accent-1">
 
-</body>
+      <h1 class="header center red-text">Welcome to Trade Jack</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A quick and easy way to hire help!</h5>
+      </div>
+      <div class="row center">
+        <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light red">Sign up</a>
+      </div>
+
+	  	{{!-- {{> categorytp}} --}}
+
+    <!-- Listings -->
+    <div class="section yellow full-height">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 center">
+            <h1>Listings</h1>
+            <div class="row masonry-grid">
+              {{!-- {{> cardstp}} --}}
+              {{!-- {{> categorytp }} --}}
+              {{#each rawData}}
+                {{> cardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+<div class="section gray accent-1">
+<br><br><br><br>
+      <h1 class="header center red-text"> Maybe an image</h1>
+      <div class="row center">
+        {{!-- <h5 class="header col s12 light">A quick and easy way to hire help!</h5> --}}
+      </div>
+      {{!-- <div class="row center">
+        <a href=" link goes here " id="download-button" class="btn-large waves-effect waves-light red">Sign up</a> --}}
+		<br><br><br><br>
+      </div>
+
+
 
 {{> footer}}
 

@@ -1,72 +1,16 @@
 {{!-- viewing the tasks/posts --}}
-
 <header>
-  <div class="container">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Trade Jack</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="collapsible.html"></a>Home</li>
-          <li><a href="sass.html">Login </a></li>
-          <li><a href="badges.html">My Posts</a></li>
-          <li><a href="collapsible.html"></a></li>
-        </ul>
-      </div>
-    </nav>
-    <div>
+{{> nav}}
 </header>
-
 <body>
 
-  <section id="tasks" class="container">
-    <h1>All Tasks</h1>
 
-    {{{body}}}
-
-    {{!-- {{#each tasks}}
-    <div class="task">
-        <h3>{{user_name}}</h3>
-        <p>{{user_task}}</p>
-
-    </div>
-    {{else}}
-    <p>No tasks yet!</p>
-    {{/each}} --}}
 
   </section>
 </body>
 
-
-{{!-- Footer --}}
-<footer class="page-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="white-text"> </h5>
-        <p class="grey-text text-lighten-4">We hope you have enjoyed Trade Jack. If you have any questions you can reach
-          out by contacting us through the link. If you have enjoyed our website as much as we enjoyed creating it and
-          you feel like it has helped you with daily hassles around the house and want to support our team you can help
-          us by donating. Any amount would support and continue to help us continue to develop Trade Jack and is greatly
-          appreciated.</p>
-      </div>
-      <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Links</h5>
-        <ul>
-          <li><a class="grey-text text-lighten-3" href="#!">About </a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Help/Contact</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Donate</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container">
-      © 2020 Copyright
-      <a class="grey-text text-lighten-4 right" href="#!">Meet the Team</a>
-    </div>
-  </div>
-</footer>
-
+{{> footer}}
+</html>
 
 <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
 <script src="js/task.js"></script>
