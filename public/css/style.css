@@ -1,3 +1,9 @@
+/* @font-face {
+  font-family: myFirstFont;
+  src: url();
+} */
+
+
 .nav-wrapper{
     background-repeat: no-repeat;
     background-color: #d46767;
@@ -10,10 +16,12 @@
  
 
 body {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Comfrotaa', Arial, sans-serif;
   margin: 0;
   color:#5c5c5c;
   background: #d46767;
+  height: 100%;
+  width: 100%;
 }
 
 ul {
@@ -31,6 +39,8 @@ a {
   padding: 1rem 4rem;
   margin: auto;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 
