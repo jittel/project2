@@ -77,7 +77,6 @@ module.exports = {
     },
 
     // create a task
-
     newTask: function (req, res) {
         db.Task.create({
             title: req.body.title,
@@ -88,7 +87,6 @@ module.exports = {
             location: req.body.location,
             initial_price: req.body.initial_price
         }).then(function (dbTask) {
-
             res.json(dbTask);
         }).catch(function (err) {
             console.error(err);
