@@ -57,11 +57,11 @@ app.use('/home', (req, res) => {
     res.render('home');
 });
 
-app.use('/login', (req,res) => {
+app.use('/login', (req, res) => {
     res.render('login');
 });
 
-app.use('/userpage', (req,res) => {
+app.use('/userpage', (req, res) => {
     res.render('userpage');
 });
 

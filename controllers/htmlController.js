@@ -1,5 +1,5 @@
 const express = require("express");
-const Sequelize = require("sequelize");
+const sequelize = require("sequelize");
 // Requiring our models
 const db = require('../models');
 const router = express.Router();
@@ -19,29 +19,27 @@ module.exports = {
 
     // Home page 
     homePage: async function(req, res) {
-        // const allTasks = await task.allTask(req);
-        // // console.log(allTasks);
-
-        // res.render("home", {
-        //     allTasks
-        // });
-
+        var query = [{
+            model: db.Bid,
+            order: [
+                ['bid_price', 'DESC', ]
+            ],
+            limit: 1
+        }, { model: db.Picture }];
         db.Task.findAll({
-                raw: true
-            })
-            .then(function(dbTasks) {
-                db.Bid.findAll({
-                        raw: true
-                    })
-                    .then(function(dbBid) {
-                        // console.log(dbTask);
-                        res.render("home", {
-                            dbTasks: dbTasks,
-                            dbBid: dbBid
-                        });
-                        // res = dbTask
-                    });
+            include: query
+        }).then(function(allUserTaskOpen) {
+            // const raw = [];
+            // for (let i = 0; i < allUserTasksOpen.length; i++) {
+            //     raw.push(allUserTaskOpen[i].get({ plain: true }))
+            // }
+            const rawData = allUserTaskOpen.map(seqObj => seqObj.get({ plain: true }))
+            console.log(rawData);
+            // res.json(rawData)
+            res.render("home", {
+                rawData
             });
+        }).catch(err => console.log(err))
     },
 
     // Task page
@@ -60,21 +58,34 @@ module.exports = {
 
     // User page
     userPage: function(req, res) {
-        var query = {
-            // UserId: 1
-            // bid_close_time: { gt: Sequelize.literal('CURRENT_TIMESTAMP') }
-        };
+        var myDate = new Date();
+        var query = [{
+                model: db.Bid,
+                order: [
+                    ['bid_price', 'DESC', ]
+                ],
+                limit: 1
+            }, { model: db.Picture }]
+            // bid_close_time: {
+            //     $gt: myDate,
+            // },
+        ;
         db.Task.findAll({
-            raw: true,
-            where: query
-        }).then(function(allUserTaskOpen) {
-            console.log(allUserTaskOpen);
 
+            where: { UserId: 1 },
+            include: query
+        }).then(function(allUserTaskOpen) {
+            // const raw = [];
+            // for (let i = 0; i < allUserTasksOpen.length; i++) {
+            //     raw.push(allUserTaskOpen[i].get({ plain: true }))
+            // }
+            const rawData = allUserTaskOpen.map(seqObj => seqObj.get({ plain: true }))
+            console.log(rawData);
+            // res.json(rawData)
             res.render("userpage", {
-                allUserTaskOpen
+                rawData
             });
-            // return allTasks
-        });
+        }).catch(err => console.log(err))
     },
 
     // Login page

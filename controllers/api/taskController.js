@@ -1,4 +1,5 @@
 var express = require("express");
+var sequelize = require("sequelize")
 
 var router = express.Router();
 
@@ -13,19 +14,25 @@ module.exports = {
         db.Task.findAll({
             raw: true,
             where: query
-        }).then(function(allTasks) {
-            console.log(allTasks);
-
-            res.json(allTasks);
-            // return allTasks
-        });
+        })
 
         // res.json('task index route!')
     },
     allUserTaskOpen: function(req, res) {
+        var myDate = new Date();
         var query = {
             UserId: 1,
-            bid_close_time: { gt: toDate() }
+            include: [{
+                    model: db.bid,
+                    where: {
+                        attributes: [
+                            [sequelize.fn('min', sequelize.col('price')), 'minPrice']
+                        ]
+                    }
+                }, { model: db.Picture }]
+                // bid_close_time: {
+                //     $gt: myDate,
+                // },
         };
         db.Task.findAll({
             raw: true,
@@ -33,11 +40,12 @@ module.exports = {
         }).then(function(allUserTaskOpen) {
             console.log(allUserTaskOpen);
 
-            res.json(allUserTaskOpen);
-            // return allTasks
-        });
+            res.render("userpage", {
+                allUserTaskOpen
+            });
+        })
 
-        // res.json('task index route!')
+
     },
     allUserTaskClosed: function(req, res) {
         var query = {
