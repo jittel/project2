@@ -44,8 +44,8 @@ module.exports = {
 
     // Task page
 
-    taskPage: function (req, res) {
-        db.Task.findAll({}).then(function (dbTask) {
+    taskPage: function(req, res) {
+        db.Task.findAll({}).then(function(dbTask) {
 
             console.log(dbTask);
             res.render("task", {
@@ -87,7 +87,8 @@ module.exports = {
     },
 
     // Login page
-    loginPage: function (req, res) {
+
+    loginPage: function(req, res) {
         res.render("login");
     },
 
@@ -99,7 +100,7 @@ module.exports = {
     // Add task page
 
 
-    addTaskPage: function (req, res) {
+    addTaskPage: function(req, res) {
         // db.Task.create(req.body).then(function (dbTask) {
         //     res.render("addTask", {dbTask});
         // });

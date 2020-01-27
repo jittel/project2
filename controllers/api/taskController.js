@@ -101,6 +101,7 @@ module.exports = {
             category: req.body.category,
             location: req.body.location,
             initial_price: req.body.initial_price
+
         }).then(function(dbTask) {
 
             res.json(dbTask);
