@@ -11,29 +11,33 @@ const bid = require("./api/bidController");
 
 module.exports = {
     // test page: delete after development
-    testPage: function(req, res) {
+    testPage: function (req, res) {
         console.log('Test page route works');
 
         res.render('test');
     },
 
     // Home page 
-    homePage: async function(req, res) {
+    homePage: async function (req, res) {
         var query = [{
             model: db.Bid,
             order: [
                 ['bid_price', 'ASC', ]
             ],
             limit: 1
-        }, { model: db.Picture }];
+        }, {
+            model: db.Picture
+        }];
         db.Task.findAll({
             include: query
-        }).then(function(allUserTaskOpen) {
+        }).then(function (allUserTaskOpen) {
             // const raw = [];
             // for (let i = 0; i < allUserTasksOpen.length; i++) {
             //     raw.push(allUserTaskOpen[i].get({ plain: true }))
             // }
-            const rawData = allUserTaskOpen.map(seqObj => seqObj.get({ plain: true }))
+            const rawData = allUserTaskOpen.map(seqObj => seqObj.get({
+                plain: true
+            }))
             console.log(rawData);
             // res.json(rawData)
             res.render("home", {
@@ -44,40 +48,62 @@ module.exports = {
 
     // Task page
 
-    taskPage: function(req, res) {
-        db.Task.findAll({}).then(function(dbTask) {
-
-            console.log(dbTask);
+    taskPage: async function (req, res) {
+        var query = [{
+            model: db.Bid,
+            order: [
+                ['bid_price', 'ASC', ]
+            ],
+            limit: 1
+        }, {
+            model: db.Picture
+        }];
+        db.Task.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: query
+        }).then(function (allUserTaskOpen) {
+            const rawData = allUserTaskOpen.get({
+                plain: true
+            })
+            console.log(rawData);
             res.render("task", {
-                dbTask
+                rawData
             });
-        })
+        }).catch(err => console.log(err))
     },
 
     // User page
-    userPage: function(req, res) {
+    userPage: function (req, res) {
         var myDate = new Date();
         var query = [{
-                model: db.Bid,
-                order: [
-                    ['bid_price', 'ASC', ]
-                ],
-                limit: 1
-            }, { model: db.Picture }]
-            // bid_close_time: {
-            //     $gt: myDate,
-            // },
+            model: db.Bid,
+            order: [
+                ['bid_price', 'ASC', ]
+            ],
+            limit: 1
+        }, {
+            model: db.Picture
+        }]
+        // bid_close_time: {
+        //     $gt: myDate,
+        // },
         ;
         db.Task.findAll({
 
-            where: { UserId: 1 },
+            where: {
+                UserId: 1
+            },
             include: query
-        }).then(function(allUserTaskOpen) {
+        }).then(function (allUserTaskOpen) {
             // const raw = [];
             // for (let i = 0; i < allUserTasksOpen.length; i++) {
             //     raw.push(allUserTaskOpen[i].get({ plain: true }))
             // }
-            const rawData = allUserTaskOpen.map(seqObj => seqObj.get({ plain: true }))
+            const rawData = allUserTaskOpen.map(seqObj => seqObj.get({
+                plain: true
+            }))
             console.log(rawData);
             // res.json(rawData)
             res.render("userpage", {
@@ -92,14 +118,14 @@ module.exports = {
     },
 
     // Create account page
-    createAccPage: function(req, res) {
+    createAccPage: function (req, res) {
         res.render("create-acc");
     },
 
     // Add task page
 
 
-    addTaskPage: function(req, res) {
+    addTaskPage: function (req, res) {
         // db.Task.create(req.body).then(function (dbTask) {
         //     res.render("addTask", {dbTask});
         // });
