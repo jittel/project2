@@ -23,7 +23,7 @@ $(function () {
       location: location.val().trim(),
       initial_price: initial_price.val().trim()
     };
-    console.log(taskData);
+    // console.log(taskData);
 
     $.ajax({
       method: "POST",

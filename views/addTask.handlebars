@@ -75,29 +75,17 @@
 
             <input type="submit" class="btn btn-reverse" id="submitBtn">
 
-            {{!-- <button id="widget" class="cloudinary-button">Upload image</button> --}}
-            {{!-- <script type="text/javascript">
-                // var recUrl;
-                var widget = cloudinary.createUploadWidget({
-                    cloudName: 'delw6elgw',
-                    uploadPreset: 'r6mprs9r'
-                }, (err, res) => {
-                    if (!err && res && res.event === "success") {
-                        console.log(res.info);
-                        console.log("image uploaded");
-                        // recUrl = res.info.url
-                    }
-                }
-                )
-                document.getElementById("widget").addEventListener("click", function () {
-                    widget.open();
-                    console.log("bunssss")
-                }, false);
-            </script> --}}
+            {{!-- ADD IMG UPLOAD BUTTON HERE --}}
+                <label class="file-upload-container" for="file-upload">
+                    <input id="file-upload" type="file" style="display:none" class="btn btn-reverse">
+                    Select an Image
+                </label>
 
 
             <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
             <script src="js/addTask.js"></script>
+            <script src="js/addImg.js"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
         </div>
 </section>
