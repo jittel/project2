@@ -55,7 +55,13 @@
                     value="{{task_start}}">
             </div>
 
-            <button id="widget" class="cloudinary-button">Upload image</button>
+            
+
+
+            <input type="submit" value="Add Post" class="btn btn-reverse" id="submitBtn">
+        </form>
+
+        <button id="widget" class="cloudinary-button">Upload image</button>
             <script type="text/javascript">
                // var recUrl;
                 var widget = cloudinary.createUploadWidget({
@@ -71,16 +77,13 @@
                 )
                 document.getElementById("widget").addEventListener("click", function () {
                     widget.open();
+                    console.log("bunssss")
                 }, false);
             </script>
 
 
-            <input type="submit" value="Add Post" class="btn btn-reverse" id="submitBtn">
-        </form>
-
-
         <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
-        <script src="js/add.js"></script>
+        <script src="js/addTask.js"></script>
 
     </div>
 </section>
