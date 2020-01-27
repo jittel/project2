@@ -77,20 +77,4 @@ $(function () {
             };
         })
     };
-
-    // Check password functions to be called when user enters value and when submit button is pressed
-//     function checkPassword() {
-//         // const passArr = password.map();
-//         if (password.val().trim().length >= 8) {
-//             formCheck[1] = true;
-//             console.log("the password is valid");
-//             $("#note2").remove();
-//         } else {
-//             formCheck[1] = false;
-//             console.log("the password is invalid");
-//             $("#note2").remove();
-//             $(".password").append(`<p class="note2" style="color: red;">* password must be 8-128 characters with lower/uppercase letters, numbers, and special characters</p>`);
-//         };
-//     };
-// })
 })
