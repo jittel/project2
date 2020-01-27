@@ -86,6 +86,8 @@ module.exports = {
         }).catch(err => console.log(err))
     },
 
+    
+
     // Login page
     loginPage: function(req, res) {
         res.render("login");
@@ -94,6 +96,12 @@ module.exports = {
     // Create account page
     createAccPage: function(req, res) {
         res.render("create-acc");
+    },
+
+
+    // Team page
+    teamPage: function(req, res) {
+        res.render("page");
     },
 
     // Add task page

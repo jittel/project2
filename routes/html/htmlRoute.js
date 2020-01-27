@@ -7,6 +7,7 @@ router.route("/user").get(htmlController.userPage);
 router.route("/add-task").get(htmlController.addTaskPage);
 router.route("/login").get(htmlController.loginPage);
 router.route("/create-acc").get(htmlController.createAccPage);
+router.route("/team").get(htmlController.teamPage);
 // Test page. delete after development 
 router.route("/test").get(htmlController.testPage);
 
