@@ -73,20 +73,25 @@
 
 
 
+
+            {{> footer}}
+
+
             <input type="submit" class="btn btn-reverse" id="submitBtn">
 
             {{!-- ADD IMG UPLOAD BUTTON HERE --}}
-                <label class="file-upload-container" for="file-upload">
-                    <input id="file-upload" type="file" style="display:none" class="btn btn-reverse">
-                    Select an Image
-                </label>
+            <label class="file-upload-container" for="file-upload">
+                <input id="file-upload" type="file" style="display:none" class="btn btn-reverse">
+                Select an Image
+            </label>
 
 
             <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
             <script src="js/addTask.js"></script>
             <script src="js/addImg.js"></script>
             <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
+            <script src="js/add.js"></script>
 
         </div>
 </section>
-
