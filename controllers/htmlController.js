@@ -1,6 +1,7 @@
 const express = require("express");
-const sequelize = require("sequelize");
-// Requiring our models
+var sequelize, { Op } = require("sequelize")
+var moment = require("moment")
+    // Requiring our models
 const db = require('../models');
 const router = express.Router();
 
@@ -11,14 +12,19 @@ const bid = require("./api/bidController");
 
 module.exports = {
     // test page: delete after development
-    testPage: function (req, res) {
-        console.log('Test page route works');
+    testPage: function(req, res) {
+        var distinctTaskFromBidOpen = bid.distinctTaskFromBidOpen
+        var distinctTaskFromBidClosed = bid.distinctTaskFromBidClosed
 
-        res.render('test');
+        distinctTaskFromBidOpen().then(function(distinctTaskdata) {
+            res.json(distinctTaskdata)
+        }).catch(err => console.log(err));
     },
 
     // Home page 
-    homePage: async function (req, res) {
+    homePage: async function(req, res) {
+        var myDate = new Date();
+        var myMoment = moment();
         var query = [{
             model: db.Bid,
             order: [
@@ -29,6 +35,12 @@ module.exports = {
             model: db.Picture
         }];
         db.Task.findAll({
+
+            where: {
+                bid_end_time: {
+                    [Op.gte]: myMoment
+                }
+            },
             include: query
         }).then(function (allUserTaskOpen) {
             // const raw = [];
@@ -75,41 +87,63 @@ module.exports = {
     },
 
     // User page
-    userPage: function (req, res) {
-        var myDate = new Date();
-        var query = [{
-            model: db.Bid,
-            order: [
-                ['bid_price', 'ASC', ]
-            ],
-            limit: 1
-        }, {
-            model: db.Picture
-        }]
-        // bid_close_time: {
-        //     $gt: myDate,
-        // },
-        ;
-        db.Task.findAll({
+    userPage: function(req, res) {
+        var allUserTaskOpen = task.allUserTaskOpen
+        var allUserTaskClosed = task.allUserTaskClosed
+        var distinctTaskFromBidOpen = bid.distinctTaskFromBidOpen
+        var distinctTaskFromBidClosed = bid.distinctTaskFromBidClosed
+            // console.log(allUserTaskOpen);
 
-            where: {
-                UserId: 1
-            },
-            include: query
-        }).then(function (allUserTaskOpen) {
-            // const raw = [];
-            // for (let i = 0; i < allUserTasksOpen.length; i++) {
-            //     raw.push(allUserTaskOpen[i].get({ plain: true }))
-            // }
-            const rawData = allUserTaskOpen.map(seqObj => seqObj.get({
-                plain: true
-            }))
-            console.log(rawData);
-            // res.json(rawData)
-            res.render("userpage", {
-                rawData
-            });
-        }).catch(err => console.log(err))
+        // Promise.all([allUserTaskOpen, allUserTaskClosed])
+        allUserTaskOpen()
+            .then(function(allUserTaskOpenRes) {
+                allUserTaskClosed()
+                    .then(function(allUserTaskClosedRes) {
+                        distinctTaskFromBidOpen()
+                            .then(function(distinctTaskFromBidOpenRes) {
+                                distinctTaskFromBidClosed()
+                                    .then(function(distinctTaskFromBidClosedRes) {
+
+
+
+                                        // const raw = [];
+                                        // for (let i = 0; i < allUserTasksOpen.length; i++) {
+                                        //     raw.push(allUserTaskOpen[i].get({ plain: true }))
+                                        // }
+                                        const rawOpenData = allUserTaskOpenRes.map(seqObj => seqObj.get({ plain: true }))
+                                        const rawClosedData = allUserTaskClosedRes.map(seqObj => seqObj.get({ plain: true }))
+                                        const rawDistinctOpenData = distinctTaskFromBidOpenRes.map(seqObj => seqObj.get({ plain: true }))
+                                        const rawDistinctClosedData = distinctTaskFromBidClosedRes.map(seqObj => seqObj.get({ plain: true }))
+                                            // console.log({ rawOpenData, rawClosedData, rawDistinctOpenData, rawDistinctClosedData });
+                                        const {...tasks } = rawDistinctOpenData;
+                                        // console.log(typeof(tasks));
+                                        const distinctOpenArr = [];
+                                        for (const task in tasks) {
+                                            distinctOpenArr.push(tasks[task].Task);
+                                            // console.log(tasks[task].Task);
+                                        }
+
+                                        const { Task } = tasks;
+                                        var [first, second, third] = someArray;
+                                        console.log(Task);
+                                        // res.json({
+                                        //         rawOpenData,
+                                        //         rawClosedData,
+                                        //         distinctOpenArr,
+                                        //         // Task,
+                                        //         rawDistinctClosedData
+                                        //     })
+                                        res.render("userpage", {
+                                            rawOpenData,
+                                            rawClosedData,
+                                            // rawDistinctOpenData,
+                                            // rawDistinctClosedData
+                                        })
+                                    })
+                            })
+                    });
+            }).catch(err => console.log(err))
+
     },
 
     // Login page
