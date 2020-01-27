@@ -23,18 +23,21 @@ $(function () {
       location: location.val().trim(),
       initial_price: initial_price.val().trim()
     };
-    console.log(taskData);
+    // console.log(taskData);
 
     $.ajax({
       method: "POST",
       url: "/api/task/new",
-      data: taskData
-    }).then(function (err, data) {
-      if (err) throw err;
-      console.log("LOOK AT ME")
-      console.log(data)
-      alert("Your new task has been created")
-      window.location.href = "/api/task";
+      data: taskData,
+      success: function (data) {
+        console.log(data);
+        console.log("success");
+        alert("Your new task has been created")
+        window.location.href = "/task";
+      },
+      error: function (msg) {
+        console.log("error on page");
+      }
     })
   })
 })

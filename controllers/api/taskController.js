@@ -98,10 +98,12 @@ module.exports = {
         // router.put("/:id", function (req, res) {
         db.Task.update(
             req.body, {
-                where: {
-                    id: req.body.id
-                }
-            }).then(function(dbTask) {
+
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbTask) {
+
             res.json(dbTask);
         }).catch(function (err) {
             console.error(err);
