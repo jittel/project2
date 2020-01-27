@@ -30,9 +30,12 @@ module.exports = {
             console.error(err);
         });
     },
-    // Get route for retrieving a username
+    // Get route for checking a username
     // route: /api/user/:username
     userName: function (req, res) {
+        if (req.params.username) {
+            
+        }
         db.User.findOne({
             where: {
                 username: req.params.username
