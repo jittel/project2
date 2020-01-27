@@ -1,8 +1,36 @@
+{{!-- Basically the "landing" page so it should be a replica of home.handlebars --}}
+
+    <title>Trade Jack | Outdoor, Indoor, Misc. Tasks</title>
+</head>
+{{!-- Updated the Navbar TP --}}
+<body>
+    <header>
+     {{> usernav}}
+
+    </header>
+
+    {{{body}}}
+   
+
+ <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED TP -->
+
+  <script src="js/userpage.js"></script>
+
+</div> 
+</header>
+</body>
+
+  {{!-- <div class="container">
+    <div class="section"> --}}
+
+{{!-- {{> cardstp}} --}}
+{{!-- {{> categorytp }} --}}
+
 <h2>My Open Posts</h2>
   <div class="row">
     {{!-- Insert here each , unless , path to block and closeing unless and each --}}
     {{#each allUserTaskOpen}}
-    {{> taskcard-block}}
+    {{> usercardstp-block}}
     {{!-- path to home-block partial file --}}
     {{/each}}
   </div>
@@ -11,7 +39,7 @@
   <div class="row">
     {{!-- Insert here each , unless , path to block and closeing unless and each --}}
     {{#each allUserTaskClosed}}
-    {{> taskcard-block}}
+    {{> usercardstp-block}}
     {{!-- path to home-block partial file --}}
     {{/each}}
   </div>
@@ -20,7 +48,7 @@
   <div class="row">
     {{!-- Insert here each , unless , path to block and closeing unless and each --}}
     {{#each dbOpenBids}}
-    {{> taskcard-block}}
+    {{> usercardstp-block}}
     {{!-- path to home-block partial file --}}
     {{/each}}
   </div>
@@ -29,7 +57,15 @@
   <div class="row">
     {{!-- Insert here each , unless , path to block and closeing unless and each --}}
     {{#each dbClosedBids}}
-    {{> taskcard-block}}
+    {{> usercardstp-block}}
     {{!-- path to home-block partial file --}}
     {{/each}}
   </div>
+
+
+{{> footer}}
+</div>
+
+	<!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
+  <script src="js/home.js"></script>
+
