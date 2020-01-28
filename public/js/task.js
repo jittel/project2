@@ -39,7 +39,7 @@ $(function () {
       success: function (data) {
         console.log(data);
         // if no bids
-        if (!data) {
+        if (data) {
           console.log("There are no bids at this time");
           $(".insertOptions").append(`<p>There are no bids at this time</p>`);
         } else {
