@@ -1,6 +1,4 @@
 
-
-<body>
   <div class="row center">
     <div class="col s12 m12">
       <div class="card">
@@ -14,9 +12,11 @@
           </div>
           <div class="col s12 m6">
             <div class="card-content">
+              <div class="taskUserId" id={{rawData.userId}}></div>
               <span class="card-title" id={{rawData.id}}>Task: {{rawData.title}} </span>
               <h6>Location: {{rawData.location}}</h6>
               <h6>Intitial Price: ${{rawData.initial_price}}</h6>
+              <h6>Leading Bidder: {{#each rawData}} {{Bids.Task.username}} {{/each}} </h6>
               <h6>Current Bid: ${{#each rawData.Bids}} {{bid_price}} {{/each}} </h6>
               <h6>Bid End Time: {{rawData.bid_end_time}}</h6>
               {{!-- bid --}}
@@ -38,12 +38,6 @@
     </div>
   </div>
 
-
-</body>
-
-{{> footer}}
-
-</html>
 
 <!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
 <script src="/js/task.js"></script>

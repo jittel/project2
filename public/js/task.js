@@ -6,7 +6,8 @@ $('#submitBtn').click(function () {
   
     // get form data
     const userData = {
-      username: username.val().trim(),
+      bid_price: $("#bid").val().trim(),
+      UserId: $("#")
     };
 
     $.ajax({
