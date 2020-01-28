@@ -39,10 +39,21 @@ module.exports = {
     // create a bid
     newBid: function(req, res) {
         // router.post("/new", function (req, res) {
-        db.Bid.create(req.body).then(function(dbBid) {
-            res.json(dbBid);
-        });
+        // db.Bid.create(req.body).then(function(dbBid) {
+        //     res.json(dbBid);
         // });
+        //
+        db.Bid.create({
+            bid_price: req.body.bid_price,
+            UserId: req.body.UserId,
+            TaskId: req.body.TaskId
+        })
+        .then(function (data) {
+            // return data
+            res.json(data);
+        }).catch(function (err) {
+            console.error(err);
+        })
     },
 
     // update a bid
