@@ -55,7 +55,7 @@ router.post('/login', function (req, res) {
             username: req.body.username
         }
     }).then(function (dbUser) {
-        console.log(dbUser)
+        console.log(dbUser.id)
         //compares password send in req.body to one in database, will return true if matched.
         if (!dbUser) {
             res.json({ loggedIn: false })
