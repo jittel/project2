@@ -5,7 +5,7 @@ $(function () {
     console.log('UserId: ' + sessionUserId);
     $(".userPageLink").attr("href", `sessionUserId${sessionUserId}`)
   }
-  
+
   // If logged in set link to log out/ if logged out set link to log in
   if (sessionUserId) {
     $(".loginLink").attr("href", "/login");
@@ -17,7 +17,7 @@ $(function () {
     // $(".loginLink").text("Logout")
     // console.log("logout");
   }
-  
+
   // if this task does not belong to this owner add bid options
   if (sessionUserId === $(".taskUserId").attr("value")) {
     $(".insertOptions").append(`<label for="bid">What's your bid?</label>
@@ -30,24 +30,22 @@ $(function () {
     // add bidder data
     let taskId = $(".taskId").attr("value");
     console.log("taskId: " + taskId);
-    
+
     $.ajax({
       method: "GET",
       url: `/api/bid/bytask/${taskId}`,
       // data: {TaskId: taskId},
       success: function (data) {
         console.log(data);
-        
-        if (data) {
+        // if no bids
+        if (!data) {
           console.log("There are no bids at this time");
           $(".insertOptions").append(`<p>There are no bids at this time</p>`);
         } else {
-          $(".insertOptions").append();
-          console.log("this username is taken");
-          
+          // display bids
           for (let i = 0; i < data.length; i++) {
-            $(".insertOptions").append(`<p class="note1" style="color: red;">Bid ${i}: $${data[i].bid_price}.00 </p>`);
-            
+            $(".insertOptions").append(`<div class="row"><div class="col m6"><p class="note1" style="color: red;">Bid ${i}: $${data[i].bid_price}.00 </p></div><div  class="col m6">     <button type="submit" class="btn btn-reverse acceptBidBtn" value="${data[i].id}"> Accept Bid
+            </button></div></div>`);
           }
         }
       },
@@ -57,10 +55,15 @@ $(function () {
     })
   }
 
+  // Accept this bid
+  $(".acceptBidBtn").click(function () {
+    console.log($(this).val());
+    
+  })
 
   // Submit form on submit button click
   $('#submitBtn').click(function () {
-    
+
     // get form data
     const userData = {
       bid_price: $("#bid").val().trim(),
@@ -69,13 +72,13 @@ $(function () {
       TaskId: $(".taskId").attr("value")
     };
     console.log(userData);
-    
+
     if (userData.bid_price > 0) {
       $.ajax({
         type: "POST",
         url: "/api/bid/new",
         data: userData,
-        
+
         success: function (data) {
           console.log(data);
           console.log("success");
