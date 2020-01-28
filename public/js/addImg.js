@@ -19,9 +19,8 @@ fileUpload.addEventListener("change", function (event) {
         data: formData
     }).then(function (res) {
         console.log(res)
+        alert("your image has been uploaded!")
     }).catch(function(err) {
         console.error(err)
     })
 })
-
-// DON'T FORGET THE AXIOS LINK IN THE HANDLEBARS FILE

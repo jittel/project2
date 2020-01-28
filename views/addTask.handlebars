@@ -3,6 +3,7 @@
 
 
 <section id="add" class="container center ">
+
     <div class="form-wrap">
         <h1>Add A Post</h1>
         <p>Your username will be shared with registered users who reply to your post.</p>
@@ -37,6 +38,7 @@
             <label>Materialize Select</label>
         </div>
 
+
         <div class="input-group location">
             <label for="Location">Location</label>
             <input type="text" name="location" id="location" class="input-box" placeholder="Seattle" maxlength="30"
@@ -54,14 +56,17 @@
             <input type="date" name="task_start" id="task_start" class="input-box" placeholder="02-10-20"
                 value="{{task_start}}">
 
+
             <input type="submit" class="btn btn-reverse" id="submitBtn">
             <br><br><br>
         </div>
         {{!-- IMG UPLOAD BUTTON HERE --}}
+
         <label class="file-upload-container btn btn-reverse" for="file-upload">
             <input id="file-upload" type="file" style="display:none">
             Select an Image
         </label>
+
         <script>
             $(document).ready(function () {
                 $('select').formSelect();
@@ -84,3 +89,4 @@
 
 
 </section>
+
