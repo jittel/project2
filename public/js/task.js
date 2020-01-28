@@ -1,10 +1,11 @@
 $(function () {
   let sessionUserId;
-  if (localStorage.getItem('id') !== null) {
+    if (localStorage.getItem('id') !== null) {
     sessionUserId = JSON.parse(localStorage.getItem('id'));
     console.log('UserId: ' + sessionUserId);
-    $(".userPageLink").attr("href", `sessionUserId${sessionUserId}`)
+    $(".userPageLink").attr("href", `/user/${sessionUserId}`)
   }
+
 
   // If logged in set link to log out/ if logged out set link to log in
   if (sessionUserId) {

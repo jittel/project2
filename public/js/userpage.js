@@ -1,10 +1,11 @@
 $(function () {
-let sessionUserId;
-  if (localStorage.getItem('id') !== null) {
+  let sessionUserId;
+    if (localStorage.getItem('id') !== null) {
     sessionUserId = JSON.parse(localStorage.getItem('id'));
     console.log('UserId: ' + sessionUserId);
-    $(".userPageLink").attr("href", `sessionUserId${sessionUserId}`)
+    $(".userPageLink").attr("href", `/user/${sessionUserId}`)
   }
+
 
 
 
