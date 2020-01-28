@@ -33,7 +33,8 @@ module.exports = {
             order: [
                 ['bid_price', 'ASC', ]
             ],
-            limit: 1
+            limit: 1,
+            include: db.User
         }, { model: db.Picture }];
         return db.Task.findAll({
 
@@ -55,7 +56,8 @@ module.exports = {
             order: [
                 ['bid_price', 'ASC', ]
             ],
-            limit: 1
+            limit: 1,
+            include: db.User
         }, { model: db.Picture }]
 
         ;
@@ -89,7 +91,8 @@ module.exports = {
                 order: [
                     ['bid_price', "ASC"]
                 ],
-                limit: 1
+                limit: 1,
+                include: db.User
             }, { model: db.Picture }],
         })
     },
@@ -111,7 +114,8 @@ module.exports = {
                 order: [
                     ['bid_price', "ASC"]
                 ],
-                limit: 1
+                limit: 1,
+                include: db.User
             }, { model: db.Picture }],
         })
     },
