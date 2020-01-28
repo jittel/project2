@@ -13,6 +13,9 @@
         <h6>Location: {{location}}</h6>
         <h6>Intitial Price: ${{initial_price}}</h6>
         {{#each Bids}}
+        <h6>Leading Bidder: {{User.username}}</h6>
+        {{/each}}
+        {{#each Bids}}
         <h6>Current Bid: ${{bid_price}}</h6>
         {{/each}}
         <h6>Bid End Time: {{bid_end_time}}</h6>

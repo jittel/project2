@@ -33,13 +33,14 @@ module.exports = {
             order: [
                 ['bid_price', 'ASC', ]
             ],
-            limit: 1
+            limit: 1,
+            include: db.User
         }, { model: db.Picture }];
         return db.Task.findAll({
 
             where: {
-                UserId: req.session.user.id,
-                // UserId: 1,
+                // UserId: req.session.user.id,
+                UserId: 1,
                 bid_end_time: {
                     [Op.gte]: myMoment
                 }
@@ -55,15 +56,16 @@ module.exports = {
             order: [
                 ['bid_price', 'ASC', ]
             ],
-            limit: 1
+            limit: 1,
+            include: db.User
         }, { model: db.Picture }]
 
         ;
         return db.Task.findAll({
 
             where: {
-                UserId: req.session.user.id,
-                // UserId: 1,
+                // UserId: req.session.user.id,
+                UserId: 1,
                 bid_end_time: {
                     [Op.lte]: myMoment
                 }
@@ -83,13 +85,14 @@ module.exports = {
             include: [{
                 model: db.Bid,
                 where: {
-                    // UserId: 1
-                    UserId: req.session.user.id,
+                    UserId: 1
+                        // UserId: req.session.user.id,
                 },
                 order: [
                     ['bid_price', "ASC"]
                 ],
-                limit: 1
+                limit: 1,
+                include: db.User
             }, { model: db.Picture }],
         })
     },
@@ -105,13 +108,14 @@ module.exports = {
             include: [{
                 model: db.Bid,
                 where: {
-                    // UserId: 1
-                    UserId: req.session.user.id,
+                    UserId: 1
+                        // UserId: req.session.user.id,
                 },
                 order: [
                     ['bid_price', "ASC"]
                 ],
-                limit: 1
+                limit: 1,
+                include: db.User
             }, { model: db.Picture }],
         })
     },
