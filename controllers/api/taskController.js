@@ -146,7 +146,8 @@ module.exports = {
             task_start: req.body.task_start,
             category: req.body.category,
             location: req.body.location,
-            initial_price: req.body.initial_price
+            initial_price: req.body.initial_price,
+            UserId: req.body.UserId
 
         }).then(function(dbTask) {
 
