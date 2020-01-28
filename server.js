@@ -37,10 +37,6 @@ app.use(express.static("public"));
 var exphbs = require('express-handlebars');
 // Routes
 // =============================================================
-// const taskRoutes = require('./controllers/taskController');
-
-
-// app.use("/api/task", taskRoutes);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -49,10 +45,16 @@ app.set('view engine', 'handlebars');
 app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true, cookie: { maxAge: 7200000 } }));
 
 
+
 // Routes
 // =============================================================
+const authRoutes = require('./controllers/api/authController');
+
+
+app.use("/auth", authRoutes);
 
 app.use('/', allRoutes);
+
 
 
 // Syncing our sequelize models and then starting our Express app

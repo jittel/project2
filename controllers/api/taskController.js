@@ -38,7 +38,7 @@ module.exports = {
         return db.Task.findAll({
 
             where: {
-                UserId: req.session.userid,
+                UserId: req.session.user.id,
                 // UserId: 1,
                 bid_end_time: {
                     [Op.gte]: myMoment
@@ -62,7 +62,7 @@ module.exports = {
         return db.Task.findAll({
 
             where: {
-                UserId: req.session.userid,
+                UserId: req.session.user.id,
                 // UserId: 1,
                 bid_end_time: {
                     [Op.lte]: myMoment
@@ -84,7 +84,7 @@ module.exports = {
                 model: db.Bid,
                 where: {
                     // UserId: 1
-                    UserId: req.session.userid,
+                    UserId: req.session.user.id,
                 },
                 order: [
                     ['bid_price', "ASC"]
@@ -106,7 +106,7 @@ module.exports = {
                 model: db.Bid,
                 where: {
                     // UserId: 1
-                    UserId: req.session.userid,
+                    UserId: req.session.user.id,
                 },
                 order: [
                     ['bid_price', "ASC"]

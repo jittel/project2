@@ -23,10 +23,10 @@ module.exports = {
     },
 
     // Home page 
-
     homePage: async function(req, res) {
         var myDate = new Date();
         var myMoment = moment();
+
 
         var query = [{
             model: db.Bid,
