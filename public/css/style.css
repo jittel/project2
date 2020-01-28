@@ -6,7 +6,6 @@
 
 .nav-wrapper{
     background-repeat: no-repeat;
-    background-color: #d46767;
     color:#5c5d5c;
   }
 
@@ -19,7 +18,7 @@ body {
   font-family: 'Comfrotaa', Arial, sans-serif;
   margin: 0;
   color:#5c5c5c;
-  background: #d46767;
+
   height: 100%;
   width: 100%;
 }
