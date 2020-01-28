@@ -33,7 +33,7 @@ module.exports = {
     // Get route for checking a username
     // route: /api/user/:username
     userName: function (req, res) {
-        if (req.params.username.length >= 5) {  
+        if (req.params.username.length >= 2) {  
             db.User.findOne({
                 attributes: ["username"],
                 where: {
