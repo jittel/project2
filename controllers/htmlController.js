@@ -101,17 +101,17 @@ module.exports = {
         // console.log(allUserTaskOpen);
 
         // Promise.all([allUserTaskOpen, allUserTaskClosed])
-        allUserTaskOpen()
+        allUserTaskOpen(req, res)
             .then(function(allUserTaskOpenRes) {
-                allUserTaskClosed()
+                allUserTaskClosed(req, res)
                     .then(function(allUserTaskClosedRes) {
-                        allUserBiddedTasksOpen()
+                        allUserBiddedTasksOpen(req, res)
                             .then(function(distinctTaskFromBidOpenRes) {
                                 distinctTaskFromBidOpenRes = distinctTaskFromBidOpenRes.filter(entry => {
                                     return entry.Bids.length
                                 })
 
-                                allUserBiddedTasksClosed()
+                                allUserBiddedTasksClosed(req, res)
                                     .then(function(distinctTaskFromBidClosedRes) {
                                         distinctTaskFromBidClosedRes = distinctTaskFromBidClosedRes.filter(entry => {
                                             return entry.Bids.length
