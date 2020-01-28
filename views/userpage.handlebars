@@ -33,7 +33,7 @@
           <h2>My Open Bids</h2>
             <div class="row">
               {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-              {{#each rawDistinctOpenData.Task}}
+              {{#each rawDistinctOpenData}}
               {{> usercardstp}}
               {{!-- path to home-block partial file --}}
               {{/each}}
@@ -42,7 +42,7 @@
           <h2>My Closed Bids</h2>
             <div class="row">
               {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-              {{#each rawDistinctClosedData.Task}}
+              {{#each rawDistinctClosedData}}
               {{> usercardstp}}
               {{!-- path to home-block partial file --}}
               {{/each}}

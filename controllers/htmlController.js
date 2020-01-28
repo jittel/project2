@@ -16,7 +16,8 @@ module.exports = {
         var distinctTaskFromBidOpen = bid.distinctTaskFromBidOpen
         var distinctTaskFromBidClosed = bid.distinctTaskFromBidClosed
 
-        distinctTaskFromBidOpen().then(function(distinctTaskdata) {
+
+        distinctTaskFromBidClosed().then(function(distinctTaskdata) {
             res.json(distinctTaskdata)
         }).catch(err => console.log(err));
     },
@@ -25,6 +26,8 @@ module.exports = {
     homePage: async function(req, res) {
         var myDate = new Date();
         var myMoment = moment();
+
+
         var query = [{
             model: db.Bid,
             order: [
@@ -42,7 +45,7 @@ module.exports = {
                 }
             },
             include: query
-        }).then(function (allUserTaskOpen) {
+        }).then(function(allUserTaskOpen) {
             // const raw = [];
             // for (let i = 0; i < allUserTasksOpen.length; i++) {
             //     raw.push(allUserTaskOpen[i].get({ plain: true }))
@@ -60,7 +63,7 @@ module.exports = {
 
     // Task page
 
-    taskPage: async function (req, res) {
+    taskPage: async function(req, res) {
         var query = [{
             model: db.Bid,
             order: [
@@ -75,7 +78,7 @@ module.exports = {
                 id: req.params.id
             },
             include: query
-        }).then(function (allUserTaskOpen) {
+        }).then(function(allUserTaskOpen) {
             const rawData = allUserTaskOpen.get({
                 plain: true
             })
@@ -90,19 +93,27 @@ module.exports = {
     userPage: function(req, res) {
         var allUserTaskOpen = task.allUserTaskOpen
         var allUserTaskClosed = task.allUserTaskClosed
-        var distinctTaskFromBidOpen = bid.distinctTaskFromBidOpen
-        var distinctTaskFromBidClosed = bid.distinctTaskFromBidClosed
-            // console.log(allUserTaskOpen);
+        var allUserBiddedTasksOpen = task.allUserBiddedTasksOpen
+        var allUserBiddedTasksClosed = task.allUserBiddedTasksClosed
+
+        // console.log(allUserTaskOpen);
 
         // Promise.all([allUserTaskOpen, allUserTaskClosed])
         allUserTaskOpen()
             .then(function(allUserTaskOpenRes) {
                 allUserTaskClosed()
                     .then(function(allUserTaskClosedRes) {
-                        distinctTaskFromBidOpen()
+                        allUserBiddedTasksOpen()
                             .then(function(distinctTaskFromBidOpenRes) {
-                                distinctTaskFromBidClosed()
+                                distinctTaskFromBidOpenRes = distinctTaskFromBidOpenRes.filter(entry => {
+                                    return entry.Bids.length
+                                })
+
+                                allUserBiddedTasksClosed()
                                     .then(function(distinctTaskFromBidClosedRes) {
+                                        distinctTaskFromBidClosedRes = distinctTaskFromBidClosedRes.filter(entry => {
+                                            return entry.Bids.length
+                                        })
 
 
 
@@ -115,29 +126,37 @@ module.exports = {
                                         const rawDistinctOpenData = distinctTaskFromBidOpenRes.map(seqObj => seqObj.get({ plain: true }))
                                         const rawDistinctClosedData = distinctTaskFromBidClosedRes.map(seqObj => seqObj.get({ plain: true }))
                                             // console.log({ rawOpenData, rawClosedData, rawDistinctOpenData, rawDistinctClosedData });
-                                        const {...tasks } = rawDistinctOpenData;
-                                        // console.log(typeof(tasks));
-                                        const distinctOpenArr = [];
-                                        for (const task in tasks) {
-                                            distinctOpenArr.push(tasks[task].Task);
-                                            // console.log(tasks[task].Task);
-                                        }
 
-                                        const { Task } = tasks;
-                                        var [first, second, third] = someArray;
-                                        console.log(Task);
+
+
+                                        // const {...tasksOpen } = rawDistinctOpenData;
+                                        // console.log((rawDistinctOpenData));
+                                        // const distinctOpenArr = [];
+                                        // for (const task in tasksOpen) {
+                                        //     distinctOpenArr.push(tasksOpen[task].Task);
+                                        //     // console.log(tasks[task].Task);
+                                        // }
+                                        // const {...tasksClosed } = rawDistinctClosedData;
+                                        // console.log((rawDistinctClosedData));
+                                        // const distinctClosedArr = [];
+                                        // for (const task in tasksClosed) {
+                                        //     distinctClosedArr.push(tasksClosed[task].Task);
+                                        //     // console.log(tasks[task].Task);
+                                        // }
+
+
+
                                         // res.json({
                                         //         rawOpenData,
                                         //         rawClosedData,
-                                        //         distinctOpenArr,
-                                        //         // Task,
+                                        //         rawDistinctOpenData,
                                         //         rawDistinctClosedData
                                         //     })
                                         res.render("userpage", {
                                             rawOpenData,
                                             rawClosedData,
-                                            // rawDistinctOpenData,
-                                            // rawDistinctClosedData
+                                            rawDistinctOpenData,
+                                            rawDistinctClosedData
                                         })
                                     })
                             })
@@ -152,14 +171,14 @@ module.exports = {
     },
 
     // Create account page
-    createAccPage: function (req, res) {
+    createAccPage: function(req, res) {
         res.render("create-acc");
     },
 
     // Add task page
 
 
-    addTaskPage: function (req, res) {
+    addTaskPage: function(req, res) {
         // db.Task.create(req.body).then(function (dbTask) {
         //     res.render("addTask", {dbTask});
         // });
