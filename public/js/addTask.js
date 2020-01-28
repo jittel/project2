@@ -8,10 +8,10 @@ $(function () {
 
   
   // Get user id out of local storage
-  let sessionUserId = "";
+  let sessionUserId2 = "";
   if (localStorage.getItem('id') !== null) {
-    sessionUserId = JSON.parse(localStorage.getItem('id'));
-    console.log('UserId: ' + sessionUserId);
+    sessionUserId2 = JSON.parse(localStorage.getItem('id'));
+    console.log('UserId: ' + sessionUserId2);
   }
 
   // jquery variables
@@ -38,6 +38,8 @@ $(function () {
       location: location.val().trim(),
       initial_price: initial_price.val().trim()
     };
+    // HAVE ANOTHER VARIABLE FOR AN OBJECT W THE PICTURE LINK TO POST TO THE DB
+
     // console.log(taskData);
 
     $.ajax({
