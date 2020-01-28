@@ -18,7 +18,8 @@ $(function () {
     // console.log("logout");
   }
   
-  if (sessionUserId !== $(".taskUserId").attr("value")) {
+  // if this task does not belong to this owner add bid options
+  if (sessionUserId === $(".taskUserId").attr("value")) {
     $(".insertOptions").append(`<label for="bid">What's your bid?</label>
     <input type="number" name="bid" id="bid" class="input-box" placeholder="100.00">
     <div class="input-group bid">
@@ -26,12 +27,34 @@ $(function () {
     <button type="submit" class="btn btn-reverse" id="submitBtn"> Submit
     </button>`);
   } else {
-    $(".insertOptions").append(`<label for="bid">What's your bid?</label>
-    <input type="number" name="bid" id="bid" class="input-box" placeholder="100.00">
-    <div class="input-group bid">
-    </div>
-    <button type="submit" class="btn btn-reverse" id="submitBtn"> Submit
-    </button>`);
+    // add bidder data
+    let taskId = $(".taskId").attr("value");
+    console.log("taskId: " + taskId);
+    
+    $.ajax({
+      method: "GET",
+      url: `/api/bid/bytask/${taskId}`,
+      // data: {TaskId: taskId},
+      success: function (data) {
+        console.log(data);
+        
+        if (data) {
+          console.log("There are no bids at this time");
+          $(".insertOptions").append(`<p>There are no bids at this time</p>`);
+        } else {
+          $(".insertOptions").append();
+          console.log("this username is taken");
+          
+          for (let i = 0; i < data.length; i++) {
+            $(".insertOptions").append(`<p class="note1" style="color: red;">Bid ${i}: $${data[i].bid_price}.00 </p>`);
+            
+          }
+        }
+      },
+      error: function (msg) {
+        console.log("error on page: " + msg);
+      }
+    })
   }
 
 
