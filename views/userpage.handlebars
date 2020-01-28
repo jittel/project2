@@ -19,7 +19,7 @@
             <h2>My Open Posts</h2>
             <div class="row">
               {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-              {{#each rawData}}
+              {{#each rawOpenData}}
               {{> usercardstp}}
               {{!-- path to home-block partial file --}}
               {{/each}}
@@ -28,7 +28,7 @@
           <h2>My Closed Posts</h2>
             <div class="row">
               {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-              {{#each allUserTaskClosed}}
+              {{#each rawClosedData}}
               {{> usercardstp}}
               {{!-- path to home-block partial file --}}
               {{/each}}
@@ -37,7 +37,7 @@
           <h2>My Open Bids</h2>
             <div class="row">
               {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-              {{#each dbOpenBids}}
+              {{#each rawDistinctOpenData.Task}}
               {{> usercardstp}}
               {{!-- path to home-block partial file --}}
               {{/each}}
@@ -46,7 +46,7 @@
           <h2>My Closed Bids</h2>
             <div class="row">
               {{!-- Insert here each , unless , path to block and closeing unless and each --}}
-              {{#each dbClosedBids}}
+              {{#each rawDistinctClosedData.Task}}
               {{> usercardstp}}
               {{!-- path to home-block partial file --}}
               {{/each}}
