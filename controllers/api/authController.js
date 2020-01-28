@@ -55,6 +55,7 @@ router.post('/login', function (req, res) {
             username: req.body.username
         }
     }).then(function (dbUser) {
+        console.log(dbUser)
         //compares password send in req.body to one in database, will return true if matched.
         if (!dbUser) {
             res.json({ loggedIn: false })
@@ -62,6 +63,7 @@ router.post('/login', function (req, res) {
         else if (bcrypt.compareSync(req.body.password, dbUser.password)) {
             //create new session property "user", set equal to logged in user
             req.session.user = { username: dbUser.username, id: dbUser.id };
+            // save the user id to local storage
             res.json({ loggedIn: true })
         }
         else {
@@ -72,6 +74,9 @@ router.post('/login', function (req, res) {
         }
         // res.json(dbUser.id)
         // res.json(dbUser.username)
+        // var id = dbUser.id;
+        // localStorage.setItem("id", JSON.stringify(id));
+        // console.log(res.sessions.user);
     })
 })
 
