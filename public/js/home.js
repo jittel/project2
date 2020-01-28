@@ -20,3 +20,5 @@ $(function () {
 
   //   window.location.href = "/signup/" + id;
  });
+
+ var instance = M.Sidenav.getInstance(elem);
