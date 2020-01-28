@@ -86,7 +86,7 @@ $(function () {
         // data: userData
         success: function (data) {
           // if (err) throw err;
-          console.log(data)
+          // console.log(data)
           if (data === null) {
             formCheck[0] = true;
             console.log("this username available");
@@ -148,4 +148,11 @@ $(function () {
     }
   }
 
+  
 })
+
+
+
+
+  
+  

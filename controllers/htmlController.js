@@ -33,7 +33,8 @@ module.exports = {
             order: [
                 ['bid_price', 'ASC', ]
             ],
-            limit: 1
+            limit: 1,
+            include: db.User
         }, {
             model: db.Picture
         }];
@@ -51,10 +52,10 @@ module.exports = {
             //     raw.push(allUserTaskOpen[i].get({ plain: true }))
             // }
             const rawData = allUserTaskOpen.map(seqObj => seqObj.get({
-                plain: true
-            }))
-            console.log(rawData);
-            // res.json(rawData)
+                    plain: true
+                }))
+                // console.log(rawData);
+                // res.json(rawData)
             res.render("home", {
                 rawData
             });
@@ -69,7 +70,8 @@ module.exports = {
             order: [
                 ['bid_price', 'ASC', ]
             ],
-            limit: 1
+            limit: 1,
+            include: db.User
         }, {
             model: db.Picture
         }];
@@ -80,9 +82,9 @@ module.exports = {
             include: query
         }).then(function(allUserTaskOpen) {
             const rawData = allUserTaskOpen.get({
-                plain: true
-            })
-            console.log(rawData);
+                    plain: true
+                })
+                // console.log(rawData);
             res.render("task", {
                 rawData
             });

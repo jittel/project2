@@ -7,14 +7,15 @@ $(function () {
     // get form data
     const userData = {
       bid_price: $("#bid").val().trim(),
-      UserId: $(".taskUserId").attr("value")
+      UserId: $(".taskUserId").attr("value"),
+      id: $(".")
     };
 
     if (userData.bid_price > 0) {
       
       $.ajax({
         type: "POST",
-        url: "/api/user/new",
+        url: "/api/task/new",
         data: userData,
         
         success: function (data) {

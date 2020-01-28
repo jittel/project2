@@ -6,21 +6,21 @@ $(function () {
     // Form check variables
     const formCheck = [false, false]
 
-    $('#loginForm').on('submit', event => {
-        event.preventDefault();
+    $('.submitBtn').click(event => {
+        // event.preventDefault();
         const ajaxObj = {
-          username: $("input[name=username]").val(),
-          password: $("input[name=password]").val()
+            username: $(username).val().trim(),
+            password: $(password).val().trim()
         }
+        console.log(ajaxObj);
+
         $.post('/auth/login', ajaxObj).then(data => {
-          console.log(data);
-          data.loggedIn ? alert("logged in, redirect plz") : alert('failed to loggin');
-          // save the user id to local storage
-          var id = data.id;
-          localStorage.setItem("id", JSON.stringify(id));
-          window.location.href = "/";
+            console.log(data);
+            data.loggedIn ? alert("logged in, redirect plz") : alert('failed to loggin');
+            // save the user id to local storage
+            window.location.href = "/";
         })
-      })
+    })
 
 
     // Check username on focus change
@@ -56,4 +56,22 @@ $(function () {
             };
         })
     };
+
+    // load user id into local storage
+    username.focusout(function () {
+        if (username.val().trim().length > 0) {
+            $.ajax({
+                method: "GET",
+                url: `/api/user/${username.val().trim()}`,
+                success: function (data) {
+                    if (data) {
+                        localStorage.setItem("id", JSON.stringify(data.id));
+                    }
+                },
+                error: function (msg) {
+                    console.log("error on page: " + msg);
+                }
+            })
+        }
+    });
 })

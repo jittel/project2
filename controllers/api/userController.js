@@ -35,7 +35,7 @@ module.exports = {
     userName: function (req, res) {
         if (req.params.username.length >= 2) {  
             db.User.findOne({
-                attributes: ["username"],
+                attributes: ["username", "id"],
                 where: {
                     username: req.params.username
                 }
