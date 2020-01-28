@@ -18,7 +18,7 @@ fileUpload.addEventListener("change", function (event) {
         },
         data: formData
     }).then(function (res) {
-        console.log(res)
+        console.log(res.data.url)
         alert("your image has been uploaded!")
     }).catch(function(err) {
         console.error(err)
