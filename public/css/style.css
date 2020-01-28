@@ -1,0 +1,82 @@
+/* @font-face {
+  font-family: myFirstFont;
+  src: url();
+} */
+
+
+.nav-wrapper{
+    background-repeat: no-repeat;
+    color:#5c5d5c;
+  }
+
+  #newtask {
+    color: #5c5c5c;
+  }
+ 
+
+body {
+  font-family: 'Comfrotaa', Arial, sans-serif;
+  margin: 0;
+  color:#5c5c5c;
+
+  height: 100%;
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: #5c5c5c;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 960px;
+  padding: 1rem 4rem;
+  margin: auto;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* Header */
+header {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6rem;
+}
+
+header ul {
+  display: flex;
+}
+
+header li {
+  margin: 0 1rem;
+}
+
+
+.parallax-demo header,
+.parallax-demo main,
+.parallax-demo footer {
+  padding-left: 0;
+}
+
+footer {
+  padding-left: 0;
+  position: sticky;
+}
+
+@media only screen and (max-width: 992px) {
+  header, main, footer, footer.page-footer {
+    padding-left: 0;
+  }
+}

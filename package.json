@@ -1,0 +1,36 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "a reverse bidding site to either request work or apply for work",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jittel/project2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jittel/project2/issues"
+  },
+  "homepage": "https://github.com/jittel/project2#readme",
+  "dependencies": {
+    "authorization": "^1.0.9",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "handlebars": "^4.7.2",
+    "materialize": "^1.0.0",
+    "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.24.0",
+    "mysql": "^2.18.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.3"
+  }
+}

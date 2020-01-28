@@ -1,0 +1,52 @@
+
+<!-- Contact Us -->
+<div class="section light valign-wrapper">
+  <div class="container">
+    <form id="loginForm"  style="margin-top: 80px;">
+      {{!-- <input type="text" name="username" placeholder="Username"> --}}
+
+       {{!-- Username --}}
+    <div class="input-group username">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" class="input-box" placeholder="username at least 5 characters"
+        maxlength="30">
+    </div>
+
+    {{!-- Email --}}
+    <div class="input-group password">
+      <label for="password">password</label>
+      <input type="text" name="password" id="password" class="input-box" placeholder="password" maxlength="30"
+      >
+
+    </div>
+
+      {{!-- <input type="password" name="password" placeholder="password"> --}}
+      {{!-- <input type="submit" value="Go Go go!"> --}}
+      <a class="waves-effect waves-light btn-large submitBtn">Submit</a>
+      <a href="/create-acc">First time? sign up here!</a>
+
+
+       
+      <div class="row" style="margin-top: 80px;">
+        <div class="col s12">
+          <h2 class="section-title">Contact Us</h2>
+        </div>
+        <div class="input-field col s6">
+          <input id="first_name" type="text">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text">
+          <label for="last_name">Last Name</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="message" class="materialize-textarea"></textarea>
+          <label for="message">Message</label>
+          <a class="waves-effect waves-light btn-large">Button</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/login.js"></script>

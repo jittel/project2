@@ -1,0 +1,55 @@
+{{!-- Basically the "landing" page so it should be a replica of home.handlebars --}}
+
+{{!-- Updated the Navbar TP --}}
+
+  <!-- Listings -->
+  <div class="section green accent-1 full-height">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center">
+          <h1>My Listings</h1>
+          <div class="row masonry-grid">
+            <h2>My Open Posts</h2>
+            <div class="row">
+              {{!-- Insert here each , unless , path to block and closeing unless and each --}}
+              {{#each rawOpenData}}
+              {{> usercardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+
+          <h2>My Closed Posts</h2>
+            <div class="row">
+              {{!-- Insert here each , unless , path to block and closeing unless and each --}}
+              {{#each rawClosedData}}
+              {{> usercardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+
+          <h2>My Open Bids</h2>
+            <div class="row">
+              {{!-- Insert here each , unless , path to block and closeing unless and each --}}
+              {{#each rawDistinctOpenData}}
+              {{> usercardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+
+          <h2>My Closed Bids</h2>
+            <div class="row">
+              {{!-- Insert here each , unless , path to block and closeing unless and each --}}
+              {{#each rawDistinctClosedData}}
+              {{> usercardstp}}
+              {{!-- path to home-block partial file --}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	<!-- RENDER TEMPLATE AFTER EVERYTHING ELSE LOADED -->
+  <script src="js/userpage.js"></script>
+
