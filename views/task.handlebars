@@ -1,7 +1,4 @@
-{{!-- viewing the tasks/posts --}}
-<header>
-  {{> nav}}
-</header>
+
 
 <body>
   <div class="row center">
@@ -17,17 +14,30 @@
           </div>
           <div class="col s12 m6">
             <div class="card-content">
-              <span class="card-title">Task: {{rawData.title}} </span>
+              <span class="card-title" id={{rawData.id}}>Task: {{rawData.title}} </span>
               <h6>Location: {{rawData.location}}</h6>
               <h6>Intitial Price: ${{rawData.initial_price}}</h6>
               <h6>Current Bid: ${{#each rawData.Bids}} {{bid_price}} {{/each}} </h6>
               <h6>Bid End Time: {{rawData.bid_end_time}}</h6>
+              {{!-- bid --}}
+
+              <div class="input-group bid">
+                <label for="bid">What's your bid?</label>
+                <input type="number" name="bid" id="bid" class="input-box" placeholder="100.00">
+              </div>
+
+              {{!-- Form Submit --}}
+              <button type="submit" class="btn btn-reverse" id="submitBtn"> Submit
+              </button>
+              {{!-- </form> --}}
+              <br><br><br>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 
 </body>
 

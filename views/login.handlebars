@@ -1,9 +1,8 @@
-{{> lognav}}
 <body>
 
-    <div class="section green accent-1 valign-wrapper">
+    <div class="section grey lighten-2 valign-wrapper">
         <div class="container">
-            <form>
+            <form id="loginForm">
                 <br>
                 <div class="row">
                     <div class="col s12">
@@ -26,11 +25,48 @@
                     <a href="/create-acc">First time? sign up here!</a>
                     {{!-- </form> --}}
                 </div>
-                  <br><br><br>
-             </div>    
+                <br><br><br>
         </div>
     </div>
-</body>
 
-{{> footer}}
-</html>
+
+    <!-- Contact Us -->
+    <div class="section teal lighten-5 valign-wrapper">
+        <div class="container">
+            <form>
+                <div class="row">
+                    <div class="col s12">
+                        <h2 class="section-title">Contact Us</h2>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="first_name" type="text">
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" type="text">
+                        <label for="last_name">Last Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="message" class="materialize-textarea"></textarea>
+                        <label for="message">Message</label>
+                        <a class="waves-effect waves-light btn-large">Button</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $('#loginForm').on('submit', event => {
+            event.preventDefault();
+            const ajaxObj = {
+                username: $("input[name=username]").val(),
+                password: $("input[name=password]").val()
+            }
+            $.post('/auth/login', ajaxObj).then(data => {
+                //console.log(data);
+                data.loggedIn ? alert("logged in, redirect plz") : alert('failed to loggin');
+                window.location.href = "/";
+            })
+        })
+    </script>

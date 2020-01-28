@@ -1,4 +1,6 @@
 var express = require("express");
+var sequelize, { Op } = require("sequelize")
+var moment = require("moment")
 
 var router = express.Router();
 
@@ -68,7 +70,49 @@ module.exports = {
             res.json(dbBid);
         });
         // });
-    }
+    },
+
+    //     distinctTaskFromBidOpen: function(req, res) {
+    //         var myDate = new Date();
+    //         var myMoment = moment();
+    //         return db.Bid.findAll({
+    //             where: {
+    //                 UserId: 1,
+    //             },
+    //             include: [{
+    //                 model: db.Task,
+    //                 where: {
+    //                     // UserId: req.session.userid,
+    //                     UserId: 1,
+    //                     bid_end_time: {
+    //                         [Op.gte]: myMoment
+    //                     }
+    //                 }
+    //             }],
+    //             attributes: ["TaskId"],
+    //             group: ["TaskId"]
+    //         })
+    //     },
+    //     distinctTaskFromBidClosed: function(req, res) {
+    //         var myDate = new Date();
+    //         var myMoment = moment();
+    //         return db.Bid.findAll({
+    //             where: {
+    //                 UserId: 1,
+    //             },
+    //             include: [{
+    //                 model: db.Task,
+
+    //                 where: {
+    //                     bid_end_time: {
+    //                         [Op.lte]: myMoment
+    //                     }
+    //                 }
+    //             }],
+    //             attributes: ["TaskId"],
+    //             group: ["TaskId"]
+    //         })
+    //     }
 }
 
 // Export routes for server.js to use.
