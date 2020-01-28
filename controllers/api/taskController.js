@@ -24,54 +24,32 @@ module.exports = {
         }).catch(function(err) {
             console.error(err);
         });
-
-        // res.json('task index route!')
     },
     allUserTaskOpen: function(req, res) {
         var myDate = new Date();
         var myMoment = moment();
-        myMoment.subtract(1, 'day');
         var query = [{
-                model: db.Bid,
-                order: [
-                    ['bid_price', 'ASC', ]
-                ],
-                limit: 1
-            }, { model: db.Picture }]
-            // bid_close_time: {
-            //     $gt: myDate,
-            // },
-        ;
+            model: db.Bid,
+            order: [
+                ['bid_price', 'ASC', ]
+            ],
+            limit: 1
+        }, { model: db.Picture }];
         return db.Task.findAll({
 
-                where: {
-                    UserId: req.session.userid,
-                    // UserId: 1,
-                    bid_end_time: {
-                        [Op.lte]: myMoment
-                    }
-                },
-                include: query
-            })
-            // .then(function(allUserTaskOpen) {
-            //     // const raw = [];
-            //     // for (let i = 0; i < allUserTasksOpen.length; i++) {
-            //     //     raw.push(allUserTaskOpen[i].get({ plain: true }))
-            //     // }
-            //     const openData = allUserTaskOpen.map(seqObj => seqObj.get({ plain: true }))
-            //     console.log(openData);
-            //     // res.json(openData)
-            //     res.render("userpage", {
-            //         openData
-            //     });
-            // }).catch(err => console.log(err))
-
-
+            where: {
+                UserId: req.session.userid,
+                // UserId: 1,
+                bid_end_time: {
+                    [Op.gte]: myMoment
+                }
+            },
+            include: query
+        })
     },
     allUserTaskClosed: function(req, res) {
         var myDate = new Date();
         var myMoment = moment();
-        myMoment.subtract(1, 'day');
         var query = [{
             model: db.Bid,
             order: [
@@ -83,33 +61,65 @@ module.exports = {
         ;
         return db.Task.findAll({
 
+            where: {
+                UserId: req.session.userid,
+                // UserId: 1,
+                bid_end_time: {
+                    [Op.lte]: myMoment
+                }
+            },
+            include: query
+        })
+    },
+    allUserBiddedTasksOpen: function(req, res) {
+        var myDate = new Date();
+        var myMoment = moment();
+        return db.Task.findAll({
+            where: {
+                bid_end_time: {
+                    [Op.gte]: myMoment
+                }
+            },
+            include: [{
+                model: db.Bid,
                 where: {
+                    // UserId: 1
                     UserId: req.session.userid,
-                    // UserId: 1,
-                    bid_end_time: {
-                        [Op.gte]: myMoment
-                    }
                 },
-                include: query
-            })
-            // .then(function(allUserTaskClosed) {
-            //     // const raw = [];
-            //     // for (let i = 0; i < allUserTasksOpen.length; i++) {
-            //     //     raw.push(allUserTaskOpen[i].get({ plain: true }))
-            //     // }
-            //     const closedData = allUserTaskClosed.map(seqObj => seqObj.get({ plain: true }))
-            //     console.log(closedData);
-            //     // res.json(closedData)
-            //     res.render("userpage", {
-            //         closedData
-            //     });
-            // }).catch(err => console.log(err))
+                order: [
+                    ['bid_price', "ASC"]
+                ],
+                limit: 1
+            }, { model: db.Picture }],
+        })
+    },
+    allUserBiddedTasksClosed: function(req, res) {
+        var myDate = new Date();
+        var myMoment = moment();
+        return db.Task.findAll({
+            where: {
+                bid_end_time: {
+                    [Op.lte]: myMoment
+                }
+            },
+            include: [{
+                model: db.Bid,
+                where: {
+                    // UserId: 1
+                    UserId: req.session.userid,
+                },
+                order: [
+                    ['bid_price', "ASC"]
+                ],
+                limit: 1
+            }, { model: db.Picture }],
+        })
     },
 
 
     // Get route for retrieving a single post
+    // route api/task/:id
     singleTask: function(req, res) {
-        // router.get("/:id", function (req, res) {
         db.Task.findOne({
             where: {
                 id: req.params.id
@@ -120,7 +130,6 @@ module.exports = {
         }).catch(function(err) {
             console.error(err);
         });
-        // });
     },
 
     // create a task
@@ -150,7 +159,8 @@ module.exports = {
             req.body, {
 
                 where: {
-                    id: req.body.id
+                    // id: req.body.id
+                    id: 1
                 }
             }).then(function(dbTask) {
 
