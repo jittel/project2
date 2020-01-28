@@ -36,7 +36,8 @@ $(function () {
       task_start: task_start.val().trim(),
       category: category.val().trim(),
       location: location.val().trim(),
-      initial_price: initial_price.val().trim()
+      initial_price: initial_price.val().trim(),
+      UserId: sessionUserId
     };
     // HAVE ANOTHER VARIABLE FOR AN OBJECT W THE PICTURE LINK TO POST TO THE DB
 
