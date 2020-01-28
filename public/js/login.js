@@ -6,43 +6,22 @@ $(function () {
     // Form check variables
     const formCheck = [false, false]
 
-    // $("#login").on("click", function (event) {
-    //     event.preventDefault();
+    $('#loginForm').on('submit', event => {
+        event.preventDefault();
+        const ajaxObj = {
+          username: $("input[name=username]").val(),
+          password: $("input[name=password]").val()
+        }
+        $.post('/auth/login', ajaxObj).then(data => {
+          console.log(data);
+          data.loggedIn ? alert("logged in, redirect plz") : alert('failed to loggin');
+          // save the user id to local storage
+          var id = data.id;
+          localStorage.setItem("id", JSON.stringify(id));
+          window.location.href = "/";
+        })
+      })
 
-    //     // Check form criteria
-    //     if (formCheck.includes(false)) {
-    //         checkUsername();
-    //         checkPassword();
-    //         console.log(formCheck);
-    //     } else {
-    //         const userData = {
-    //             username: username.val().trim(),
-    //             password: password.val().trim(),
-    //             email: email.val().trim(),
-    //         };
-
-
-
-    //         //make sure theyre right
-    //         //snag user id, save to local storage
-    //         //redirect to new page
-    //         $.ajax({
-    //             type: "POST",
-    //             url: "/api/user/new",
-    //             data: userData,
-
-    //             success: function (data) {
-    //                 console.log(data);
-    //                 console.log("success");
-    //                 alert("Your new account has been created");
-    //                 window.location.href = "/user";
-    //             },
-    //             error: function (msg) {
-    //                 console.log("error on page");
-    //             }
-    //         });
-    //     }
-    // })
 
     // Check username on focus change
     username.focusout(function () {

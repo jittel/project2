@@ -31,8 +31,9 @@ $(function () {
       success: function (data) {
         console.log(data);
         console.log("success");
+        var id = data.id;
         alert("Your new task has been created")
-        window.location.href = "/task";
+        window.location.href = `/task/${id}`;
       },
       error: function (msg) {
         console.log("error on page");

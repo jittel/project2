@@ -33,9 +33,13 @@ $(function () {
 
         success: function (data) {
           console.log(data);
+          // save the user id to local storage
+          var id = data.id;
+          localStorage.setItem("id", JSON.stringify(id));
+
           console.log("success");
           alert("Your new account has been created");
-          window.location.href = "/user";
+          window.location.href = "/";
         },
         error: function (msg) {
           console.log("error on page: " + msg);

@@ -1,10 +1,8 @@
-
-
 <form id="loginForm">
-    <input type="text" name = "username" placeholder="Username">
-    <input type="password" name = "password" placeholder="password" >
-    <input type="submit" value="Go Go go!">
-    {{!-- <a class="waves-effect waves-light btn-large" id="login">Log In</a> --}}
+  <input type="text" name="username" placeholder="Username">
+  <input type="password" name="password" placeholder="password">
+  <input type="submit" value="Go Go go!">
+  {{!-- <a class="waves-effect waves-light btn-large" id="login">Log In</a> --}}
 </form>
 
 <a href="/create-acc">First time? sign up here!</a>
@@ -12,41 +10,30 @@
 
 
 
-    <!-- Contact Us -->
-    <div class="section light valign-wrapper">
-      <div class="container">
-        <form>
-          <div class="row">
-            <div class="col s12"><h2 class="section-title">Contact Us</h2></div>
-            <div class="input-field col s6">
-              <input id="first_name" type="text">
-              <label for="first_name">First Name</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text">
-              <label for="last_name">Last Name</label>
-            </div>
-            <div class="input-field col s12">
-              <textarea id="message" class="materialize-textarea"></textarea>
-              <label for="message">Message</label>
-              <a class="waves-effect waves-light btn-large">Button</a>
-            </div>
-          </div>
-        </form>
+<!-- Contact Us -->
+<div class="section light valign-wrapper">
+  <div class="container">
+    <form>
+      <div class="row">
+        <div class="col s12">
+          <h2 class="section-title">Contact Us</h2>
+        </div>
+        <div class="input-field col s6">
+          <input id="first_name" type="text">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text">
+          <label for="last_name">Last Name</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="message" class="materialize-textarea"></textarea>
+          <label for="message">Message</label>
+          <a class="waves-effect waves-light btn-large">Button</a>
+        </div>
       </div>
-    </div>
+    </form>
+  </div>
+</div>
 
-<script>
-  $('#loginForm').on('submit',event=>{
-    event.preventDefault();
-    const ajaxObj = {
-      username:$("input[name=username]").val(),
-      password:$("input[name=password]").val()
-  }
-  $.post('/auth/login',ajaxObj).then(data=>{
-    //console.log(data);
-    data.loggedIn? alert("logged in, redirect plz"): alert('failed to loggin');
-    window.location.href = "/";
-  })
-  })
-</script>
+<script src="js/login.js"></script>
