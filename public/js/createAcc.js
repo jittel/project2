@@ -33,9 +33,13 @@ $(function () {
 
         success: function (data) {
           console.log(data);
+          // save the user id to local storage
+          var id = data.id;
+          localStorage.setItem("id", JSON.stringify(id));
+
           console.log("success");
           alert("Your new account has been created");
-          window.location.href = "/user";
+          window.location.href = "/";
         },
         error: function (msg) {
           console.log("error on page: " + msg);
@@ -75,14 +79,14 @@ $(function () {
     const thisUsername = username.val().trim();
     console.log(thisUsername);
     $(".note1").remove();
-    if (thisUsername.length > 5) {
+    if (thisUsername.length > 1) {
       $.ajax({
         method: "GET",
         url: `/api/user/${thisUsername}`,
         // data: userData
         success: function (data) {
           // if (err) throw err;
-          console.log(data)
+          // console.log(data)
           if (data === null) {
             formCheck[0] = true;
             console.log("this username available");
@@ -99,7 +103,7 @@ $(function () {
     } else {
       formCheck[0] = false;
       console.log("the username must be at least 5 characters long");
-      $(".username").append(`<p class="note1" style="color: red;">* the username must be at least 5 characters long</p>`);
+      $(".username").append(`<p class="note1" style="color: red;">* the username must be at least 2 characters long</p>`);
     }
   }
 
@@ -144,4 +148,11 @@ $(function () {
     }
   }
 
+  
 })
+
+
+
+
+  
+  
