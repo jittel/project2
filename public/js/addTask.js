@@ -1,4 +1,11 @@
 $(function () {
+  // Get user id out of local storage
+  let sessionUserId = "";
+  if (localStorage.getItem('id') !== null) {
+    sessionUserId = JSON.parse(localStorage.getItem('id'));
+    console.log('UserId: ' + sessionUserId);
+  }
+
   // jquery variables
   const title = $('#title');
   const description = $('#description');
