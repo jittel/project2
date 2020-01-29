@@ -20,13 +20,14 @@ $(function () {
   }
 
   // if this task does not belong to this owner add bid options
-  if (sessionUserId === $(".taskUserId").attr("value")) {
+  if (sessionUserId !== $(".taskUserId").attr("value")) {
     $(".insertOptions").append(`<label for="bid">What's your bid?</label>
     <input type="number" name="bid" id="bid" class="input-box" placeholder="100.00">
     <div class="input-group bid">
     </div>
     <button type="submit" class="btn btn-reverse" id="submitBtn"> Submit
     </button>`);
+
   } else {
     // add bidder data
     let taskId = $(".taskId").attr("value");
@@ -35,17 +36,16 @@ $(function () {
     $.ajax({
       method: "GET",
       url: `/api/bid/bytask/${taskId}`,
-      // data: {TaskId: taskId},
       success: function (data) {
         console.log(data);
-        // if no bids
-        if (data) {
+        // if no bids display note in red
+        if (!data) {
           console.log("There are no bids at this time");
           $(".insertOptions").append(`<p>There are no bids at this time</p>`);
         } else {
-          // display bids
+          // display all bids and accept buttons
           for (let i = 0; i < data.length; i++) {
-            $(".insertOptions").append(`<div class="row"><div class="col m6"><p class="note1" style="color: red;">Bid ${i}: $${data[i].bid_price}.00 </p></div><div  class="col m6">     <button type="submit" class="btn btn-reverse acceptBidBtn" value="${data[i].id}"> Accept Bid
+            $(".insertOptions").append(`<div class="row"><div class="col m6"><p class="note1" style="color: red;">Bid ${i}: $${data[i].bid_price.toFixed(2)} </p></div><div  class="col m6">     <button type="submit" class="btn btn-reverse acceptBidBtn" value="${data[i].id}"> Accept Bid
             </button></div></div>`);
           }
         }
