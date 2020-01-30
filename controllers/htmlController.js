@@ -193,17 +193,12 @@ module.exports = {
 	},
 
 	// Add task page
-
-
 	addTaskPage: function (req, res) {
-		// db.Task.create(req.body).then(function (dbTask) {
-		//     res.render("addTask", {dbTask});
-		// });
-		// res.render("add", {
-		//     dbTasks
-		// });
-		// console.log(res.body)
-		res.render("addTask")
-
+		if (!req.session.user) {
+			res.render('login');
+		} else {
+			console.log(req.session.user);
+		res.render("addTask", req.session.user)
+		}
 	}
 };
