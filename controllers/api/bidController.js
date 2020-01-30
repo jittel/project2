@@ -27,17 +27,13 @@ module.exports = {
     // Find all bids for a given task
     // route: api/bid/bytask
     byTaskBids: function (req, res) {
-        // console.log(req.params.TaskId); 
-        console.log(req.params.id); 
             db.Bid.findAll({
                 // attributes: ["username", "id"],
                 where: {
                     TaskId: req.params.id
                 }
             }).then(function (data) {
-                console.log(data);
-                
-                res.json(data);
+                  res.json(data);
             }).catch(function (err) {
                 console.error(err);
             });
@@ -53,7 +49,6 @@ module.exports = {
                 id: req.params.id
             }
         }).then(function (dbBid) {
-            console.log(dbBid);
             res.json(dbBid);
         });
         // });

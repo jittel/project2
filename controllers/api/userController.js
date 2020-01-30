@@ -40,8 +40,6 @@ module.exports = {
                     username: req.params.username
                 }
             }).then(function (data) {
-                console.log(data);
-                
                 res.json(data);
             }).catch(function (err) {
                 console.error(err);
@@ -53,7 +51,6 @@ module.exports = {
     // POST route for saving a new user
     // route: /api/user/new
     newUser: function (req, res) {
-        console.log(req.body);
         db.User.create({
                 username: req.body.username,
                 password: req.body.password,
@@ -82,8 +79,6 @@ module.exports = {
     // PUT route for updating user
     // route: /api/user/:id
     updateUser: function (req, res) {
-        console.log(req.body);
-
         db.User.update(
             req.body, {
                 where: {

@@ -17,8 +17,6 @@ module.exports = {
             where: query
 
         }).then(function(allTasks) {
-            console.log(allTasks);
-
             res.json(allTasks);
             // return allTasks
         }).catch(function(err) {
@@ -129,7 +127,6 @@ module.exports = {
                 id: req.params.id
             }
         }).then(function(dbTask) {
-            console.log(dbTask);
             res.json(dbTask);
         }).catch(function(err) {
             console.error(err);

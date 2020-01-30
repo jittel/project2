@@ -26,16 +26,14 @@ router.get('/signup', function (req, res) {
 
 //creates new instance of user
 router.post('/signup', function (req, res) {
-    console.log(req.body)
     db.User.create({
         username: req.body.username,
         password: req.body.password,
         email: req.body.email
     }).then(function (newUser) {
-        console.log(newUser)
         res.json(newUser);
     }).catch(function (error) {
-        console.log(error);
+        console.error(error);
         res.json({
             success: false,
             message: error.message
@@ -55,7 +53,6 @@ router.post('/login', function (req, res) {
             username: req.body.username
         }
     }).then(function (dbUser) {
-        console.log(dbUser.id)
         //compares password send in req.body to one in database, will return true if matched.
         if (!dbUser) {
             res.json({ loggedIn: false })
