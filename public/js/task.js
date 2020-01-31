@@ -84,7 +84,7 @@ $(function () {
           console.log(data);
           console.log("success");
           alert("Your bid has been created");
-          window.location.href = `/user${sessionUserId}`;
+          window.location.href = `/user/${sessionUserId}`;
         },
         error: function (msg) {
           console.log("error on page: " + msg);
