@@ -25,7 +25,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
-    "handlebars": "^4.7.2",
+    "handlebars": "^4.7.7",
     "materialize": "^1.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
